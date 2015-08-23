@@ -69,6 +69,14 @@ body {
   border-radius: 0;
 }
 
+.navbar-toggle {
+  background-color: #ee4036;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #252161;;
+}
+
 .navbar-default .navbar-nav .open .dropdown-menu>li>a, .navbar-default .navbar-nav .open .dropdown-menu {
     background-color: #252161;
   }
@@ -215,10 +223,15 @@ body {
   padding-left: 6%;
   padding-right: 6%;
   font-size: 35px;
+  color: #ee4036
 }
 
 .footer {
   margin-top: 2%;
+}
+
+.words {
+  font-size: 15px;
 }
 
 }
