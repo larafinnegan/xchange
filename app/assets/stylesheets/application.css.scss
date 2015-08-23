@@ -1,0 +1,224 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+html {
+  position:relative;
+  min-height:100%;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+
+.total {
+  margin-bottom: 0;
+  background-color: white;
+}
+
+@media (min-width: 979px){
+
+.total {
+  box-shadow: 10px 3px 10px #d8d8d8, -10px 3px 10px #d8d8d8;
+  margin-top: 2.5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 0;
+}
+
+.left {
+  float: right;
+}
+
+.right {
+  float: left;
+}
+
+.logo {
+  padding-left: 20%;
+}
+
+.motto {
+  padding-top: 6%;
+  height: 80%;
+  width: 80%;
+  float: left;
+}
+
+.two-buttons {
+  margin-top: 3%;
+}
+
+.bouton {
+  margin-bottom: 12%;
+  width: 110%;
+}
+
+.icon {
+  padding-left: 10%;
+}
+}
+
+
+.navbar {
+  border: none;
+  padding-top: 0.9%;
+  padding-bottom: 0.6%;
+  background-color: #252161;
+  padding-right: 2%;
+  border-radius: 0;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a, .navbar-default .navbar-nav .open .dropdown-menu {
+    background-color: #252161;
+  }
+
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #ee4036;
+    background-color: #252161;  
+}
+.nav.navbar-nav li a {
+  font-family: Rambla;
+  font-size: 20px;
+  color: white;
+}
+
+.nav.navbar-nav li a:visited {
+  color: white;
+}
+
+.nav.navbar-nav li a:hover {
+  color: #ee4036;
+}
+
+.nav.navbar-nav li a:active {
+  color: #ee4036;
+}
+
+.logos {
+  margin-top: 0.5%;;
+  background-color: white;
+  border: none;
+  text-align: center;
+}
+
+.content {
+  margin-top: 1.5%;
+}
+
+.dude {
+  margin: auto;
+  text-align: center;
+}
+
+.bigpic {
+  padding: 0;
+}
+
+.bouton {
+  color: white;
+  background-color: #252161;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  font-size: 35px;
+  border: none;
+}
+
+.bouton:hover {
+  background-color: #ee4036;
+  transition: border 0.4s ease 0s, background-color 0.4s ease 0s;
+  transition-property: border, background-color;
+  transition-duration:0.4s, 0.4s;
+  transition-timing-function: ease, ease;
+  transition-delay: 0s, 0s;
+}
+
+.footer {
+  background-color: #252161;
+  color: white;
+  padding: 2%;
+}
+
+.footer-img {
+  height: 80%;
+  width: 80%;
+  float: right;
+}
+
+.text {
+  line-height: 200%;
+}
+
+.icons {
+  font-size: 28px;
+}
+
+
+
+
+/* small devices */
+
+@media (max-width: 767px) {
+.navbar {
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+  color: white;
+  }
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:visited {
+  color: white;
+  }
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
+  color: #ee4036;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:active {
+  color: #ee4036;
+}
+}
+
+@media (max-width: 978px){
+
+.total {
+  margin: 0;
+}
+
+.logo {
+  margin: auto;
+}
+
+.motto {
+  margin-top: 5%;
+}
+
+.two-buttons {
+  margin-top: 1%;
+}
+
+.bouton {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 4%;
+  margin-right: 4%;
+  width: 92%;
+}
+
+.text {
+  text-align: center;
+}
+
+.icon {
+  padding-left: 6%;
+  padding-right: 6%;
+  font-size: 35px;
+}
+
+.footer {
+  margin-top: 2%;
+}
+
+}

@@ -1,0 +1,20 @@
+<div class="row">
+<div class="col-md-12 bigpic">
+<%= image_tag("dude.jpg", class: "main-img dude img-responsive") %>
+</div>
+</div>
+
+
+<!-- Example row of columns -->
+<div class="row two-buttons">
+  <div class="col-xs-12 col-sm-12 col-md-5 col-md-offset-1">
+  <%= link_to root_path do %>
+    <button type="button" class="bouton left">Find an <br>Opportunity</button>
+  <% end %>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-5">
+  <%= link_to root_path do %>
+    <button type="button" class="bouton right">We Need <br>Volunteers</button>
+  <% end %>
+  </div>
+</div><!-- end 2 buttons -->
