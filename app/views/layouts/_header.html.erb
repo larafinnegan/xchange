@@ -19,7 +19,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact Us <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Email Us</a></li>
+            <li><%= mail_to "lcfinnegan@gmail.com", "Email Us" %></li>
             <li role="separator" class="divider hidden-xs hidden-sm"></li>
             <li><a href="#">0300 1111 250</a></li>
           </ul>
@@ -36,9 +36,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">FAQs<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Organization FAQs</a></li>
+            <li><%= link_to "Organisation FAQs", organization_faq_path %></li>
             <li role="separator" class="divider hidden-xs hidden-sm"></li>
-            <li><a href="#">Individual FAQs</a></li>
+            <li><%= link_to "Individual FAQs", individual_faq_path %></li>
           </ul>
         </li>
       </ul>
