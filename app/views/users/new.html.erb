@@ -1,0 +1,27 @@
+ <% if request.path_info.include?('ind') %>
+  <h1>Register as a Volunteer</h1>
+  <%= hidden_field_tag(:role, 'individual') %>
+ <% else %>
+   <h1>Register as an Organisation</h1>
+   <%= hidden_field_tag(:role, 'organisation') %>
+<%  end %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+    <%= render 'shared/error_messages' %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+
+    <% end %>
+  </div>
+</div>

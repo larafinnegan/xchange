@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
 <body>
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
 <div class="total">
   <%= render "layouts/header" %>
   <div class="container-fluid main-container">
@@ -20,5 +23,6 @@
   </div>
   <%= render "layouts/footer" %>
   </div>
+  <%= debug(params) if Rails.env.development? %>
 </body>
 </html>

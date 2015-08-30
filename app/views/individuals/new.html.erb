@@ -1,0 +1,54 @@
+<h2 class="form-header">Complete your Registration</h2>
+
+<div class="row full-form">
+  <div class="col-md-12">
+    <%= form_for(@individual) do |f| %>
+    <%= render 'shared/error_messages' %>
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-2">
+
+        <div class="form-group">
+          <%= f.label :first_name, "* First Name", class: "col-md-12 control-label" %>
+          <%= f.text_field :first_name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :last_name, "* Last Name", class: "col-md-12 control-label" %>
+          <%= f.text_field :last_name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :phone, "* Primary Phone", class: "col-md-12 control-label" %>
+          <%= f.text_field :phone, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :town, "* Town", class: "col-md-12 control-label" %>
+          <%= f.text_field :town, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :postcode, "* Postcode", class: "col-md-12 control-label" %>
+          <%= f.text_field :postcode, class: "form-control" %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :additional_skills, "Additional Skills", class: "col-md-12 control-label" %>
+          <%= f.text_field :additional_skills, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-5">
+    <div class="form-group">
+      <%= f.submit "Update Account", class: "btn btn-primary form-button" %>
+    </div>
+    </div>
+    </div>
+    <% end %>
+  </div>
+</div>
