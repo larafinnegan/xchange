@@ -1,9 +1,7 @@
 <% if request.path_info.include?('ind') %>
 <h2 class="form-header">Register as a Volunteer</h2>
-<%= hidden_field_tag(:role, 'individual') %>
 <% else %>
 <h2 class="form-header">Register as an Organisation</h2>
-<%= hidden_field_tag(:role, 'organisation') %>
 <%  end %>
 
 <div class="row full-form">
@@ -25,6 +23,12 @@
       <%= f.label :password_confirmation, "Confirm Password", class: "col-md-12 control-label" %>
       <%= f.password_field :password_confirmation, class: "form-control" %>
     </div>
+
+    <% if request.path_info.include?('ind') %>
+<%= hidden_field_tag(:role, 'individual') %>
+<% else %>
+<%= hidden_field_tag(:role, 'organisation') %>
+<%  end %>
     
     <div class="row">
       <div class="col-md-4 col-md-offset-4 col-xs-12 col-sm-12">
