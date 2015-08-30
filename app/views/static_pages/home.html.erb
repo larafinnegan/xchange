@@ -8,13 +8,13 @@
 <!-- Example row of columns -->
 <div class="row two-buttons">
   <div class="col-xs-12 col-sm-12 col-md-5 col-md-offset-1">
-  <%= link_to root_path do %>
-    <button type="button" class="bouton left">Find an <br>Opportunity</button>
+  <%= link_to opportunities_path do %>
+    <button type="button" class="bouton left">I Want To <br>Volunteer</button>
   <% end %>
   </div>
   <div class="col-xs-12 col-sm-12 col-md-5">
-  <%= link_to root_path do %>
-    <button type="button" class="bouton right">We Need <br>Volunteers</button>
+  <%= link_to new_opportunity_path do %>
+    <button type="button" class="bouton right">Post an <br>Opportunity</button>
   <% end %>
   </div>
 </div><!-- end 2 buttons -->

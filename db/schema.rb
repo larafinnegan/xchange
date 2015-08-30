@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830004811) do
+ActiveRecord::Schema.define(version: 20150830163354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20150830004811) do
   end
 
   add_index "individuals", ["user_id"], name: "index_individuals_on_user_id", using: :btree
+
+  create_table "opportunities", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "organisation_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "opportunities", ["organisation_id"], name: "index_opportunities_on_organisation_id", using: :btree
 
   create_table "organisations", force: :cascade do |t|
     t.string   "name"
@@ -68,5 +77,6 @@ ActiveRecord::Schema.define(version: 20150830004811) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "individuals", "users"
+  add_foreign_key "opportunities", "organisations"
   add_foreign_key "organisations", "users"
 end
