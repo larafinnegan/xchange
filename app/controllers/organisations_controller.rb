@@ -1,6 +1,9 @@
 class OrganisationsController < ApplicationController
   def new
     @organisation = Organisation.new
+    @classifications = Classification.all
+    @districts = District.all
+    @interests = Interest.all
   end
 
    def create
@@ -24,6 +27,6 @@ class OrganisationsController < ApplicationController
   def organisation_params
       params.require(:organisation).permit(:name, :first_name, :last_name,
                                    :phone, :title, :mobile, :address_1, :address_2, 
-                                   :town, :postcode, :description, :website, :user_id)
+                                   :town, :postcode, :description, :website, :user_id, :classification_id)
     end
 end

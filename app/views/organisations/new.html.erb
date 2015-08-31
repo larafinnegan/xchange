@@ -2,71 +2,127 @@
 
 <div class="row full-form">
   <div class="col-md-12">
-    <%= form_for(@organisation) do |f| %>
-    <%= render 'shared/error_messages' %>
+    <%= form_for(@organisation,  html: { class: 'form-horizontal' }) do |f| %>
+    <%= render 'shared/error_messages' , object: f.object %>
 
     <div class="row">
-      <div class="col-md-5 col-md-offset-1">
-
-      <h4 class="form-header">Primary Contact Details</h4>
-
+      <div class="col-md-8 col-md-offset-2">
+      <p>Your search starts here!  Volunteering Bucks is your gateway to the best local volunteers.  To get things started, please tell us a bit about your organisation by completing the form below.</p>
+      <p>If you are already registered, please <%= link_to "sign in", login_path %> now.</p>
+      <br/>
+      
+      <h4 class="subheading">Primary Contact Details</h4>
+<hr>
       <div class="form-group">
-    <%= f.label :first_name, "* First Name", class: "col-md-12 control-label" %>
+    <%= f.label :first_name, "* First Name", class: "col-md-3 control-label" %>
+    <div class="col-md-7">
       <%= f.text_field :first_name, class: "form-control" %>
+      </div>
 </div>
 
 <div class="form-group">
-      <%= f.label :last_name, "* Last Name", class: "col-md-12 control-label" %>
+      <%= f.label :last_name, "* Last Name", class: "col-md-3 control-label" %>
+      <div class="col-md-7">
       <%= f.text_field :last_name, class: "form-control" %>
+      </div>
 </div>
 
 <div class="form-group">
-      <%= f.label :title, "* Job Title", class: "col-md-12 control-label" %>
+      <%= f.label :title, "* Job Title", class: "col-md-3 control-label" %>
+      <div class="col-md-7">
       <%= f.text_field :title, class: "form-control" %>
 </div>
+</div>
 
 <div class="form-group">
-      <%= f.label :phone, "* Primary Phone", class: "col-md-12 control-label" %>
+      <%= f.label :phone, "* Primary Phone", class: "col-md-3 control-label" %>
+      <div class="col-md-7">
       <%= f.text_field :phone, class: "form-control" %>
 </div>
+</div>
 
 <div class="form-group">
-      <%= f.label :mobile, class: "col-md-12 control-label" %>
+      <%= f.label :mobile, class: "col-md-3 control-label" %>
+      <div class="col-md-7">
       <%= f.text_field :mobile, class: "form-control" %>
-
 </div>
 </div>
-<div class="col-md-5">
-      <h4 class="form-header">Organisation Details</h4>
+<br/>
+ <h4 class="subheading">Organisation Contact Details</h4>
+ <hr>
 <div class="form-group">
-      <%= f.label :name, "* Organization Name", class: "col-md-12 control-label" %>
+      <%= f.label :name, "* Organization Name", class: "col-md-3 control-label" %>
+      <div class="col-md-7">
       <%= f.text_field :name, class: "form-control" %>
 </div>
+</div>
 <div class="form-group">
-      <%= f.label :address_1, "* Street Address 1", class: "col-md-12 control-label" %>
+      <%= f.label :address_1, "* Street Address 1", class: "col-md-3 control-label" %>
+      <div class="col-md-7">
       <%= f.text_field :address_1, class: "form-control" %>
 </div>
+</div>
 <div class="form-group">
-      <%= f.label :address_2, "Street Address 2", class: "col-md-12 control-label" %>
+      <%= f.label :address_2, "Street Address 2", class: "col-md-3 control-label" %>
+      <div class="col-md-7">
       <%= f.text_field :address_2, class: "form-control" %>
 </div>
+</div>
 <div class="form-group">
-      <%= f.label :town, "* Town", class: "col-md-12 control-label" %>
+      <%= f.label :town, "* Town", class: "col-md-3 control-label" %>
+      <div class="col-md-7">
       <%= f.text_field :town, class: "form-control" %>
 </div>
+</div>
 <div class="form-group">
-      <%= f.label :county, "* County", class: "col-md-12 control-label" %>
+      <%= f.label :county, "* County", class: "col-md-3 control-label" %>
+      <div class="col-md-7">
       <%= f.text_field :county, class: "form-control" %>
 </div>
+</div>
 <div class="form-group">
-      <%= f.label :postcode, "* Postcode", class: "col-md-12 control-label" %>
+      <%= f.label :postcode, "* Postcode", class: "col-md-3 control-label" %>
+      <div class="col-md-7">
       <%= f.text_field :postcode, class: "form-control" %>
 </div>
+</div>
+
+<br/>
+ <h4 class="subheading">Additional Organisation Information</h4>
+ <hr>
 <div class="form-group">
-      <%= f.label :description, "* Description", class: "col-md-12 control-label" %>
-      <%= f.text_field :description, class: "form-control" %>
+      <%= f.label :description, "* Description", class: "col-md-3 control-label" %>
+      <div class="col-md-7">
+      <%= f.text_area :description, class: "form-control", rows: "10", placeholder: "Please provide a brief description of your organisation..." %>
 </div>
 </div>
+
+<div class="form-group">
+<%= f.label :classification_id, "* Organisation Type", class: "col-md-3 control-label" %>
+<div class="col-md-7">
+<%= f.collection_select :classification_id, @classifications, :id, :name, include_blank: true, class: "form-control" %>
+</div>
+</div>
+
+
+<div class="form-group">
+<%= f.label :district_ids, "* District", class: "col-md-3 control-label" %>
+<div class="col-md-7">
+<%= collection_select(:organisation, :district_ids, @districts, :id, :name,{:include_blank => 'None'},
+{multiple: true, name: 'organisation[district_ids][]', selected: 0}) %>
+</div>
+</div>
+
+<div class="form-group">
+<%= f.label :interest_ids, "* Key Interests", class: "col-md-3 control-label" %>
+<div class="col-md-7">
+<%= collection_select(:organisation, :interest_ids, @interests, :id, :name,{:include_blank => 'None'},
+{multiple: true, name: 'organisation[interest_ids][]', selected: 0}) %>
+</div>
+</div>
+
+
+     
 </div>
 
 <div class="row">

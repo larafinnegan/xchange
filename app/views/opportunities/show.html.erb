@@ -1,2 +1,20 @@
-<h1>Opportunities#show</h1>
-<p>Find me in app/views/opportunities/show.html.erb</p>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+<h2 class="subheading"><%= @opportunity.name %></h2>
+<h5 class="opportunity-header"><%= @opportunity.organisation.name %></h5>
+<P><%= @opportunity.organisation.districts.name %> | Posted on <%= @opportunity.created_at.strftime("%b %d, %Y") %></P>
+<hr>
+</div>
+<div class="col-md-10 col-md-offset-1">
+<h4 class="subheading">About the Role</h4>
+<P><%= @opportunity.tasks %></P>
+<hr>
+</div>
+
+
+<div class="col-md-10 col-md-offset-1">
+<h4 class="subheading">About <%= @opportunity.organisation.name %></h4>
+<P><%= @opportunity.organisation.description %></P>
+</div>
+</div>
+

@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830163354) do
+ActiveRecord::Schema.define(version: 20150831010101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "classifications", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "districts", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "districts_organisations", id: false, force: :cascade do |t|
+    t.integer "district_id"
+    t.integer "organisation_id"
+  end
 
   create_table "individuals", force: :cascade do |t|
     t.string   "first_name"
@@ -30,20 +47,57 @@ ActiveRecord::Schema.define(version: 20150830163354) do
 
   add_index "individuals", ["user_id"], name: "index_individuals_on_user_id", using: :btree
 
+  create_table "individuals_interests", id: false, force: :cascade do |t|
+    t.integer "individual_id"
+    t.integer "interest_id"
+  end
+
+  create_table "individuals_skills", id: false, force: :cascade do |t|
+    t.integer "individual_id"
+    t.integer "skill_id"
+  end
+
+  create_table "interests", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "interests_organisations", id: false, force: :cascade do |t|
+    t.integer "interest_id"
+    t.integer "organisation_id"
+  end
+
   create_table "opportunities", force: :cascade do |t|
     t.string   "name"
     t.integer  "organisation_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.text     "tasks"
+    t.string   "commitment"
+    t.date     "close"
+    t.date     "expire"
+    t.text     "benefits"
+    t.boolean  "reimburse_expenses"
+    t.text     "additional_information"
+    t.boolean  "under_18"
+    t.boolean  "expert"
+    t.boolean  "general"
+    t.boolean  "group"
   end
 
   add_index "opportunities", ["organisation_id"], name: "index_opportunities_on_organisation_id", using: :btree
 
+  create_table "opportunities_skills", id: false, force: :cascade do |t|
+    t.integer "opportunity_id"
+    t.integer "skill_id"
+  end
+
   create_table "organisations", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "website"
     t.string   "address_1"
     t.string   "address_2"
@@ -56,9 +110,17 @@ ActiveRecord::Schema.define(version: 20150830163354) do
     t.string   "title"
     t.string   "phone"
     t.string   "mobile"
+    t.integer  "classification_id"
   end
 
+  add_index "organisations", ["classification_id"], name: "index_organisations_on_classification_id", using: :btree
   add_index "organisations", ["user_id"], name: "index_organisations_on_user_id", using: :btree
+
+  create_table "skills", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -78,5 +140,6 @@ ActiveRecord::Schema.define(version: 20150830163354) do
 
   add_foreign_key "individuals", "users"
   add_foreign_key "opportunities", "organisations"
+  add_foreign_key "organisations", "classifications"
   add_foreign_key "organisations", "users"
 end

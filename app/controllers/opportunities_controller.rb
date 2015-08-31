@@ -4,11 +4,10 @@ class OpportunitiesController < ApplicationController
   end
 
   def create
-    @opportunity = Opportunity.new(opportunity_params)
-    @individual.user_id = current_user.id
-    if @individual.save
-      flash[:info] = "You have completed the registration process."
-      redirect_to root_url
+    @opportunity = current_user.opportunities.build(opportunity_params)
+    if @opportunity.save
+      flash[:success] = "Your opportunity has been successfully created!"
+      redirect_to @opportunity
     else
       render 'new'
     end
@@ -19,6 +18,12 @@ class OpportunitiesController < ApplicationController
   end
 
   def show
+    @opportunity = Opportunity.find(params[:id])
+  end
+
+  def destroy
+    @opportunity = Opportunity.find(params[:id]).destroy
+    redirect_to opportunities_path
   end
 
   def index
@@ -26,7 +31,10 @@ class OpportunitiesController < ApplicationController
   end
 
   def opportunity_params
-      params.require(:opportunity).permit(:first_name, :last_name,
-                                   :phone, :town, :postcode, :additional_skills, :user_id)
+      params.require(:opportunity).permit(:name, :last_name,
+                                   :phone, :town, :postcode, :additional_skills, :user_id, 
+                                   :tasks, :commitment, :close, :expire, :benefits,
+                                   :reimburse_expenses, :additional_information, :under_18,
+                                   :expert, :general, :group)
     end
 end
