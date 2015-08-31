@@ -326,3 +326,40 @@ body {
 .subheading {
   color: #252161;
 }
+
+a i {
+  text-decoration: none;
+  color: white;
+}
+
+a i:visited{
+  color: white;
+}
+
+a i:hover {
+  color: #ee4036;
+}
+
+a i:active {
+  color: white;
+}
+
+.cookies {
+  text-decoration: none;
+  color: white;
+}
+
+.cookies:visited{
+text-decoration: none;
+  color: white;
+}
+
+.cookies:hover {
+text-decoration: none;
+  color: #ee4036;
+}
+
+.cookies:active {
+text-decoration: none;
+  color: white;
+}

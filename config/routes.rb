@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
+  get 'cookie_policy' => 'static_pages#cookie_policy'
   get 'register' => 'static_pages#register'
   get 'individual_faq' => 'static_pages#individual_faq'
   get 'organization_faq' => 'static_pages#organization_faq'

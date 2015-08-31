@@ -5,12 +5,18 @@
                 <%= image_tag("footer.jpg", class: "hidden-xs hidden-sm main-img footer-img img-responsive") %>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-2 col-md-push-9 icons text">
-                <i class="fa fa-linkedin icon"></i>
-                <i class="fa fa-facebook icon"></i>
+                <%= link_to("https://www.linkedin.com/company/community-impact-bucks") do %>
+                  <i class="fa fa-linkedin icon"></i>
+                  <% end %>
+                <%= link_to("https://www.facebook.com/CommunityImpactBucks") do %>
+                  <i class="fa fa-facebook icon"></i>
+                  <% end %>
+                  <%= link_to("https://twitter.com/communitybucks") do %>
                 <i class="fa fa-twitter icon"></i>
+                <% end %>
                 <i class="fa fa-rss icon"></i>
               </div>
-              <div class="col-xs-12 col-sm-12 col-md-4 text col-md-pull-2 words" >© 2015 Community Impact Bucks<br/>Registered Charity No. 1070267<br/>Registered Company Limited by Guarantee No. 3508718<br/>Cookie Policy</div>
+              <div class="col-xs-12 col-sm-12 col-md-4 text col-md-pull-2 words" >© 2015 Community Impact Bucks<br/>Registered Charity No. 1070267<br/>Registered Company Limited by Guarantee No. 3508718<br/><%= link_to "Cookie Policy", cookie_policy_path, class: "cookies" %></div>
               
       </div>
     </footer>
