@@ -97,13 +97,15 @@
           </div>
         </div>
 
+        <br/>
+
         <div class="form-group">
           <%= f.label :classification_id, "* Organisation Type", class: "col-md-3 control-label" %>
           <div class="col-md-7">
             <%= f.collection_select :classification_id, @classifications, :id, :name, {prompt: "---"}, {class: "form-control"}  %>
           </div>
         </div>
-
+        <br/>
 
         <div class="form-group">
           <%= f.label :district_ids, "* District", class: "col-md-3 control-label" %>
@@ -111,6 +113,7 @@
             <%= f.collection_select :district_ids, @districts, :id, :name, {prompt: "---"}, {multiple: true, class: "form-control"}   %>
           </div>
         </div>
+        <br/>
 
         <div class="form-group">
           <%= f.label :interest_ids, "* Key Interests", class: "col-md-3 control-label" %>
@@ -118,6 +121,7 @@
             <%= f.collection_select :interest_ids, @interests, :id, :name, {prompt: "---"}, {multiple: true, class: "form-control"}   %>
           </div>
         </div>
+        <br/>
       </div>
 
       <div class="row">

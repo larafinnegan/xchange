@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831010101) do
+ActiveRecord::Schema.define(version: 20150901041122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,9 +84,13 @@ ActiveRecord::Schema.define(version: 20150831010101) do
     t.boolean  "expert"
     t.boolean  "general"
     t.boolean  "group"
+    t.string   "town"
+    t.string   "postcode"
+    t.integer  "user_id"
   end
 
   add_index "opportunities", ["organisation_id"], name: "index_opportunities_on_organisation_id", using: :btree
+  add_index "opportunities", ["user_id"], name: "index_opportunities_on_user_id", using: :btree
 
   create_table "opportunities_skills", id: false, force: :cascade do |t|
     t.integer "opportunity_id"
@@ -140,6 +144,7 @@ ActiveRecord::Schema.define(version: 20150831010101) do
 
   add_foreign_key "individuals", "users"
   add_foreign_key "opportunities", "organisations"
+  add_foreign_key "opportunities", "users"
   add_foreign_key "organisations", "classifications"
   add_foreign_key "organisations", "users"
 end

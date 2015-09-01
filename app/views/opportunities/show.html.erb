@@ -1,20 +1,80 @@
 <div class="row">
-  <div class="col-md-10 col-md-offset-1">
-<h2 class="subheading"><%= @opportunity.name %></h2>
-<h5 class="opportunity-header"><%= @opportunity.organisation.name %></h5>
-<P><%= @opportunity.organisation.districts.name %> | Posted on <%= @opportunity.created_at.strftime("%b %d, %Y") %></P>
-<hr>
-</div>
-<div class="col-md-10 col-md-offset-1">
-<h4 class="subheading">About the Role</h4>
-<P><%= @opportunity.tasks %></P>
-<hr>
-</div>
+  <div class="col-md-8 col-md-offset-2">
+    <h2 class="subheading"><%= @opportunity.name %></h2>
 
+    <h5 class="opportunity-header"><%= @opportunity.organisation.name %></h5>
+    <p><%= @opportunity.town %> &nbsp; |  &nbsp;&nbsp;Posted on <%= @opportunity.created_at.strftime("%b %d, %Y") %></p>
 
-<div class="col-md-10 col-md-offset-1">
-<h4 class="subheading">About <%= @opportunity.organisation.name %></h4>
-<P><%= @opportunity.organisation.description %></P>
-</div>
-</div>
+  </div>
+
+  <div class="col-md-8 col-md-offset-2">
+    <hr>
+    <h4 class="subheading">About the Role</h4>
+
+    <p><%= @opportunity.tasks %></p>
+    <br/>
+  </div>
+
+  <div class="col-md-8 col-md-offset-2">
+    <p><b>Skills</b></p>
+    <% @opportunity.skills.each do |s| %>
+    <li><%= s.name %></li>
+    <% end %>
+    <br/>
+  </div>
+
+  <div class="col-md-8 col-md-offset-2">
+    <p ><b>Additional Information</b></p>
+    <p><%= @opportunity.additional_information %></p>
+  </div>
+
+  <div class="col-md-8 col-md-offset-2">
+    <hr>
+    <h4 class="subheading">Summary</h4>
+    <br/>
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <p><b>Close Date</b></p>
+        <p><%= @opportunity.close.strftime("%b %d, %Y") %></p>
+        <br/>
+      </div>
+
+      <div class="col-md-4">
+        <p><b>Reimburse Expenses</b></p>
+        <p><%= @opportunity.reimburse_expenses %></p>
+        <br/>
+      </div>
+
+      <div class="col-md-4">
+        <p><b>Suitable for under 18?</b></p>
+        <p><%= @opportunity.under_18 %></p>
+        <br/>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <p><b>Group Opportunity?</b></p>
+        <p><%= @opportunity.group %></p>
+        <br/>
+      </div>
+      <div class="col-md-8">
+      <p>sdfsdfds</p>
+      </div>
+    </div>
+    </div>
+
+      <div class="col-md-8 col-md-offset-2">
+        <hr>
+        <h4 class="subheading">About <%= @opportunity.organisation.name %></h4>
+
+        <p><%= @opportunity.organisation.description %></p>
+
+      </div>
+    </div>
+  </div>
+
 

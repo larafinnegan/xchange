@@ -27,6 +27,7 @@ class OrganisationsController < ApplicationController
   def organisation_params
       params.require(:organisation).permit(:name, :first_name, :last_name,
                                    :phone, :title, :mobile, :address_1, :address_2, 
-                                   :town, :postcode, :description, :website, :user_id, :classification_id, :district_ids => [])
+                                   :town, :county, :postcode, :description, :website, :user_id, :classification_id, 
+                                   :district_ids => [], :interest_ids => [])
     end
 end

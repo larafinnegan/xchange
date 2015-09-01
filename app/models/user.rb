@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_one :organisation, dependent: :destroy
   has_one :individual, dependent: :destroy
+  has_many :opportunities
 
   has_secure_password
 
