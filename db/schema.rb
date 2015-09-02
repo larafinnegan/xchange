@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901041122) do
+ActiveRecord::Schema.define(version: 20150902024027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20150901041122) do
     t.text     "additional_skills"
     t.string   "town"
     t.string   "postcode"
+    t.string   "title"
+    t.string   "mobile"
   end
 
   add_index "individuals", ["user_id"], name: "index_individuals_on_user_id", using: :btree
@@ -76,7 +78,6 @@ ActiveRecord::Schema.define(version: 20150901041122) do
     t.text     "tasks"
     t.string   "commitment"
     t.date     "close"
-    t.date     "expire"
     t.text     "benefits"
     t.boolean  "reimburse_expenses"
     t.text     "additional_information"
@@ -99,7 +100,6 @@ ActiveRecord::Schema.define(version: 20150901041122) do
 
   create_table "organisations", force: :cascade do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "website"
@@ -109,16 +109,16 @@ ActiveRecord::Schema.define(version: 20150901041122) do
     t.string   "county"
     t.string   "postcode"
     t.text     "description"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "title"
-    t.string   "phone"
-    t.string   "mobile"
     t.integer  "classification_id"
   end
 
   add_index "organisations", ["classification_id"], name: "index_organisations_on_classification_id", using: :btree
-  add_index "organisations", ["user_id"], name: "index_organisations_on_user_id", using: :btree
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "skills", force: :cascade do |t|
     t.string   "name"
@@ -135,9 +135,11 @@ ActiveRecord::Schema.define(version: 20150901041122) do
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
     t.string   "remember_digest"
-    t.string   "role"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -146,5 +148,4 @@ ActiveRecord::Schema.define(version: 20150901041122) do
   add_foreign_key "opportunities", "organisations"
   add_foreign_key "opportunities", "users"
   add_foreign_key "organisations", "classifications"
-  add_foreign_key "organisations", "users"
 end

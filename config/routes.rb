@@ -22,8 +22,6 @@ Rails.application.routes.draw do
   get 'register' => 'static_pages#register'
   get 'individual_faq' => 'static_pages#individual_faq'
   get 'organization_faq' => 'static_pages#organization_faq'
-  get 'new_ind'  => 'users#new'
-  get 'new_org' => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'

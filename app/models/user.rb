@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   before_save :downcase_email
   before_create :create_activation_digest
 
-  has_one :organisation, dependent: :destroy
+  belongs_to :organisation
   has_one :individual, dependent: :destroy
   has_many :opportunities
 

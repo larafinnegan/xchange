@@ -1,8 +1,5 @@
-<% if request.path_info.include?('ind') %>
-<h2 class="form-header">Register as a Volunteer</h2>
-<% else %>
-<h2 class="form-header">Register as an Organisation</h2>
-<%  end %>
+
+<h2 class="form-header">Register</h2>
 
 <div class="row full-form">
   <div class="col-md-12">
@@ -11,6 +8,20 @@
 
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
+
+        <div class="form-group">
+          <%= f.label :first_name, class: "col-md-3 control-label" %>
+          <div class="col-md-7">
+            <%= f.text_field :first_name, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :last_name, class: "col-md-3 control-label" %>
+          <div class="col-md-7">
+            <%= f.text_field :last_name, class: 'form-control' %>
+          </div>
+        </div>
 
         <div class="form-group">
           <%= f.label :email, class: "col-md-3 control-label" %>
@@ -26,29 +37,39 @@
           </div>
         </div>
 
+
         <div class="form-group">
           <%= f.label :password_confirmation, "Confirm Password", class: "col-md-3 control-label" %>
           <div class="col-md-7">
             <%= f.password_field :password_confirmation, class: "form-control" %>
           </div>
         </div>
-
-        <% if request.path_info.include?('ind') %>
-        <%= hidden_field_tag(:role, 'individual') %>
-        <% else %>
-        <%= hidden_field_tag(:role, 'organisation') %>
-        <%  end %>
-
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-2 col-md-offset-5 col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4">
-        <div class="form-group">
-          <%= f.submit "Create Account", class: "btn btn-primary form-button form-control" %>
+      <div class="col-md-8 col-md-offset-2">
+        <div class="radio" data-toggle="buttons-radio">
+        <div class="col-md-6 col-md-offset-3">
+          <%= f.radio_button :role, "Volunteer", id: "first" %>
+          <label for="first">Register as a Volunteer</label>
+          </div>
+           <div class="col-md-12 col-md-offset-3">
+          <%= f.radio_button :role, "Organisation", id: "second" %>
+          <label for="second">Register as an Organisation</label>
+          </div>
         </div>
       </div>
-      <% end %>
     </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2 col-md-offset-5 col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4">
+      <div class="form-group">
+      <br/>
+        <%= f.submit "Create Account", class: "btn btn-primary form-button form-control" %>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>
