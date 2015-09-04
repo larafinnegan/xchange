@@ -1,7 +1,7 @@
 <h2 class="form-header">Complete your Registration</h2>
 
-<% if current_user.role == "Organisation" %>
-  <%= render "individuals/org_fields" %>
-  <% else %>
-  <%= render "individuals/ind_fields" %>
-<% end %>
+<% if request.path_info.include?('Volunteer') %>
+ <%= render "individuals/ind_fields" %>
+ <% else %>
+<%= render "individuals/org_fields" %>
+ <%  end %>

@@ -2,6 +2,8 @@ class IndividualsController < ApplicationController
   def new
     @individual = Individual.new
     @organisations = Organisation.all
+    @skills = Skill.all
+    @interests = Interest.all
   end
 
   def edit
@@ -27,6 +29,7 @@ class IndividualsController < ApplicationController
   private
   def individual_params
       params.require(:individual).permit(:first_name, :last_name,
-                                   :phone, :town, :postcode, :additional_skills, :user_id)
+                                   :phone, :town, :postcode, :additional_skills, :user_id, 
+                                   :organisation_id, :skill_ids => [], :interest_ids => [])
     end
 end

@@ -38,7 +38,7 @@
         <br/>
 
         <div class="form-group">
-          <%= f.label :organisation_id, "* Choose your Organisation", class: "col-md-3 control-label" %>
+          <%= f.label :organisation_id, "* Choose your organisation", class: "col-md-3 control-label" %>
           <div class="col-md-7">
             <%= f.collection_select :organisation_id, @organisations, :id, :name, {prompt: "---"}, {class: "form-control"}  %>
           </div>

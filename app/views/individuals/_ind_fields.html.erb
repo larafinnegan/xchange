@@ -12,20 +12,6 @@
 <hr>
 
         <div class="form-group">
-          <%= f.label :first_name, "* First Name", class: "col-md-3 control-label" %>
-          <div class="col-md-7">
-          <%= f.text_field :first_name, class: "form-control" %>
-        </div>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :last_name, "* Last Name", class: "col-md-3 control-label" %>
-          <div class="col-md-7">
-          <%= f.text_field :last_name, class: "form-control" %>
-        </div>
-        </div>
-
-        <div class="form-group">
           <%= f.label :phone, "* Primary Phone", class: "col-md-3 control-label" %>
           <div class="col-md-7">
           <%= f.text_field :phone, class: "form-control" %>
@@ -49,11 +35,27 @@
         <br/>
       <h4 class="subheading">Additional Information</h4>
       <hr>
+
+      <div class="form-group">
+          <%= f.label :interest_ids, "* Key Interests", class: "col-md-3 control-label" %>
+          <div class="col-md-7">
+            <%= f.collection_select :interest_ids, @interests, :id, :name, {prompt: "---"}, {multiple: true, class: "form-control"}   %>
+          </div>
+        </div>
+        <br/>
+
+        <div class="form-group">
+          <%= f.label :skill_ids, "* Key Skills", class: "col-md-3 control-label" %>
+          <div class="col-md-7">
+            <%= f.collection_select :skill_ids, @skills, :id, :name, {prompt: "---"}, {multiple: true, class: "form-control"}   %>
+          </div>
+        </div>
+        <br/>
         
         <div class="form-group">
           <%= f.label :additional_skills, "Additional Skills", class: "col-md-3 control-label" %>
           <div class="col-md-7">
-          <%= f.text_field :additional_skills, class: "form-control" %>
+          <%= f.text_area :additional_skills, class: "form-control", rows: "10", placeholder: "Please provide any additional information about your skills or interests..." %>
         </div>
         </div>
       </div>

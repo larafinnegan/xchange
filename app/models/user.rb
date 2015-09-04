@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   before_save :downcase_email
   before_create :create_activation_digest
 
-  belongs_to :organisation
   has_one :individual, dependent: :destroy
   has_many :opportunities
 
@@ -15,7 +14,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-  accepts_nested_attributes_for :organisation, :individual
+  accepts_nested_attributes_for :individual
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
