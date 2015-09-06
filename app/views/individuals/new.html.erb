@@ -1,7 +1,74 @@
 <h2 class="form-header">Complete your Registration</h2>
 
-<% if request.path_info.include?('Volunteer') %>
- <%= render "individuals/ind_fields" %>
- <% else %>
-<%= render "individuals/org_fields" %>
- <%  end %>
+<div class="row full-form">
+  <div class="col-md-12">
+    <%= form_for(@individual, html: { class: 'form-horizontal' }) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+      <p>Your search starts here!  To get things started, please tell us a bit about you and the kind of things you’d like to be doing by completing the form below.</p>
+      <br/>
+
+      <h4 class="subheading">Contact Details</h4>
+<hr>
+
+        <div class="form-group">
+          <%= f.label :phone, "* Primary Phone", class: "col-md-3 control-label" %>
+          <div class="col-md-7">
+          <%= f.text_field :phone, class: "form-control" %>
+        </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :town, "* Town", class: "col-md-3 control-label" %>
+          <div class="col-md-7">
+          <%= f.text_field :town, class: "form-control" %>
+        </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :postcode, "* Postcode", class: "col-md-3 control-label" %>
+          <div class="col-md-7">
+          <%= f.text_field :postcode, class: "form-control" %>
+        </div>
+        </div>
+
+        <br/>
+      <h4 class="subheading">Additional Information</h4>
+      <hr>
+
+      <div class="form-group">
+          <%= f.label :interest_ids, "* Key Interests", class: "col-md-3 control-label" %>
+          <div class="col-md-7">
+            <%= f.collection_select :interest_ids, @interests, :id, :name, {prompt: "---"}, {multiple: true, class: "form-control"}   %>
+          </div>
+        </div>
+        <br/>
+
+        <div class="form-group">
+          <%= f.label :skill_ids, "* Key Skills", class: "col-md-3 control-label" %>
+          <div class="col-md-7">
+            <%= f.collection_select :skill_ids, @skills, :id, :name, {prompt: "---"}, {multiple: true, class: "form-control"}   %>
+          </div>
+        </div>
+        <br/>
+        
+        <div class="form-group">
+          <%= f.label :additional_skills, "Additional Skills", class: "col-md-3 control-label" %>
+          <div class="col-md-7">
+          <%= f.text_area :additional_skills, class: "form-control", rows: "10", placeholder: "Please provide any additional information about your skills or interests..." %>
+        </div>
+        </div>
+      </div>
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-5">
+    <div class="form-group">
+      <%= f.submit "Update Account", class: "btn btn-primary form-button" %>
+    </div>
+    </div>
+    </div>
+    <% end %>
+  </div>
+</div>

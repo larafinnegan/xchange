@@ -1,20 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'opportunities/new'
-
-  get 'opportunities/edit'
-
-  get 'opportunities/show'
-
-  get 'opportunities/index'
-
   get 'password_resets/new'
 
   get 'password_resets/edit'
 
   get 'sessions/new'
 
-  resources :users, :individuals, :organisations, :opportunities
+  resources :users, :individuals, :organisations, :opportunities, :posters
 
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'

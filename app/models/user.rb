@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   before_create :create_activation_digest
 
   has_one :individual, dependent: :destroy
+  has_one :poster, dependent: :destroy
   has_many :opportunities
 
   has_secure_password

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904024329) do
+ActiveRecord::Schema.define(version: 20150906003705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,6 @@ ActiveRecord::Schema.define(version: 20150904024329) do
   end
 
   create_table "individuals", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
     t.integer  "user_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
@@ -43,12 +41,8 @@ ActiveRecord::Schema.define(version: 20150904024329) do
     t.text     "additional_skills"
     t.string   "town"
     t.string   "postcode"
-    t.string   "title"
-    t.string   "mobile"
-    t.integer  "organisation_id"
   end
 
-  add_index "individuals", ["organisation_id"], name: "index_individuals_on_organisation_id", using: :btree
   add_index "individuals", ["user_id"], name: "index_individuals_on_user_id", using: :btree
 
   create_table "individuals_interests", id: false, force: :cascade do |t|
@@ -116,6 +110,19 @@ ActiveRecord::Schema.define(version: 20150904024329) do
 
   add_index "organisations", ["classification_id"], name: "index_organisations_on_classification_id", using: :btree
 
+  create_table "posters", force: :cascade do |t|
+    t.string   "mobile"
+    t.string   "phone"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "organisation_id"
+    t.string   "title"
+    t.integer  "user_id"
+  end
+
+  add_index "posters", ["organisation_id"], name: "index_posters_on_organisation_id", using: :btree
+  add_index "posters", ["user_id"], name: "index_posters_on_user_id", using: :btree
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -146,9 +153,10 @@ ActiveRecord::Schema.define(version: 20150904024329) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
-  add_foreign_key "individuals", "organisations"
   add_foreign_key "individuals", "users"
   add_foreign_key "opportunities", "organisations"
   add_foreign_key "opportunities", "users"
   add_foreign_key "organisations", "classifications"
+  add_foreign_key "posters", "organisations"
+  add_foreign_key "posters", "users"
 end

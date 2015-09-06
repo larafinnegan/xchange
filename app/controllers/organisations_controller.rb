@@ -8,8 +8,8 @@ class OrganisationsController < ApplicationController
 
    def create
     @organisation = Organisation.new(organisation_params)
-    @organisation.user_id = current_user.id
     if @organisation.save
+      current_user.organisation_id = @organisation.id
       flash[:info] = "You have completed the registration process."
       redirect_to root_url
     else
@@ -25,8 +25,7 @@ class OrganisationsController < ApplicationController
 
   private
   def organisation_params
-      params.require(:organisation).permit(:name, :first_name, :last_name,
-                                   :phone, :title, :mobile, :address_1, :address_2, 
+      params.require(:organisation).permit(:name, :address_1, :address_2, 
                                    :town, :county, :postcode, :description, :website, :user_id, :classification_id, 
                                    :district_ids => [], :interest_ids => [])
     end
