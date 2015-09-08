@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150906003705) do
+ActiveRecord::Schema.define(version: 20150907231729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,11 +79,15 @@ ActiveRecord::Schema.define(version: 20150906003705) do
     t.text     "additional_information"
     t.boolean  "under_18"
     t.boolean  "expert"
-    t.boolean  "general"
     t.boolean  "group"
     t.string   "town"
     t.string   "postcode"
     t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "title"
+    t.string   "email"
   end
 
   add_index "opportunities", ["organisation_id"], name: "index_opportunities_on_organisation_id", using: :btree
@@ -106,6 +110,7 @@ ActiveRecord::Schema.define(version: 20150906003705) do
     t.string   "postcode"
     t.text     "description"
     t.integer  "classification_id"
+    t.string   "twitter"
   end
 
   add_index "organisations", ["classification_id"], name: "index_organisations_on_classification_id", using: :btree

@@ -1,37 +1,92 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <h2 class="subheading"><%= @opportunity.name %></h2>
+    <h2 class="subheading top-pad"><%= @opportunity.name %></h2>
 
-    <h5 class="opportunity-header"><%= @opportunity.organisation.name %></h5>
+    <h4><%= link_to @opportunity.organisation.name, @opportunity.organisation %></h4>
     <p><%= @opportunity.town %> &nbsp; |  &nbsp;&nbsp;Posted on <%= @opportunity.created_at.strftime("%b %d, %Y") %></p>
-
   </div>
 
+
   <div class="col-md-8 col-md-offset-2">
-    <hr>
+    <br/><br/>
     <h4 class="subheading">About the Role</h4>
+    <hr>
+  </div>
+</div>
 
-    <p><%= @opportunity.tasks %></p>
-    <br/>
+<div class="row">
+  <div class="col-md-2 col-md-offset-2">
+    <p><b>Description</b></p>
   </div>
 
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-6">
+    <p><%= @opportunity.tasks %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-2">
+    <p><b>What We Can Offer</b></p>
+  </div>
+
+  <div class="col-md-6">
+    <p><%= @opportunity.benefits %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-2">
+    <p><b>Time Commitment</b></p>
+  </div>
+
+  <div class="col-md-6">
+    <p><%= @opportunity.commitment %></p>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-2">
     <p><b>Skills</b></p>
+  </div>
+
+  <div class="col-md-6">
     <% @opportunity.skills.each do |s| %>
     <li><%= s.name %></li>
     <% end %>
-    <br/>
+  </div>
+</div>
+
+<div class="row">
+  <% if @opportunity.additional_information %>
+  <div class="col-md-2 col-md-offset-2">
+    <p ><b>Additional Information</b></p>
   </div>
 
-  <div class="col-md-8 col-md-offset-2">
-    <p ><b>Additional Information</b></p>
+  <div class="col-md-6">
     <p><%= @opportunity.additional_information %></p>
   </div>
+  <% end %>
+</div>
 
+<div class="row">
+  <div class="col-md-2 col-md-offset-2">
+    <p ><b>Primary Contact</b></p>
+  </div>
+
+  <div class="col-md-6">
+    <span><%= @opportunity.first_name %> <%= @opportunity.last_name %></span><br/>
+    <span><%= @opportunity.title %></span><br/>
+     <span><%= mail_to @opportunity.email %></span><br/>
+      <span><%= @opportunity.phone %></span>
+
+  </div>
+</div>
+
+
+<div class="row">
   <div class="col-md-8 col-md-offset-2">
     <hr>
-    <h4 class="subheading">Summary</h4>
-    <br/>
 
     <div class="row">
 
@@ -42,39 +97,89 @@
       </div>
 
       <div class="col-md-4">
-        <p><b>Reimburse Expenses</b></p>
-        <p><%= @opportunity.reimburse_expenses %></p>
+        <p><b>Suitable for:</b></p>
+        <% if @opportunity.under_18 || @opportunity.group || @opportunity.expert %>
+        <% if @opportunity.under_18 %>
+        <li>Under 18s</li>
+        <% end %>
+        <% if @opportunity.group %>
+        <li>Groups</li>
+        <% end %>
+        <% if @opportunity.expert %>
+        <li>Experts</li>
+        <% end %>
+        <% else %>
+        <li>Anyone</li>
+        <% end %>
         <br/>
       </div>
 
       <div class="col-md-4">
-        <p><b>Suitable for under 18?</b></p>
-        <p><%= @opportunity.under_18 %></p>
+        <p><b>Reimburse Expenses?</b></p>
+        <% if @opportunity.reimburse_expenses %>
+        <p>Yes</p>
+        <% else %>
+        <p>No</p>
+        <% end %>
         <br/>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+  <br/>
+  <h4 class="subheading">About <%= @opportunity.organisation.name %></h4>
+<hr>
+  <p><%= @opportunity.organisation.description %></p>
+
+</div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <hr>
 
     <div class="row">
 
       <div class="col-md-4">
-        <p><b>Group Opportunity?</b></p>
-        <p><%= @opportunity.group %></p>
+        <p><b>Interests</b></p>
+        <% @opportunity.organisation.interests.each do |i| %>
+          <li><%= i.name %></li>
+        <% end %>
         <br/>
       </div>
-      <div class="col-md-8">
-      <p>sdfsdfds</p>
+
+      <div class="col-md-4">
+        <p><b>Address</b></p>
+        <%= @opportunity.organisation.address_1 if @opportunity.organisation.address_1 %><br/>
+        <%= @opportunity.organisation.address_2 if @opportunity.organisation.address_2 %><br/>
+        <%= @opportunity.organisation.town if @opportunity.organisation.town %><br/>
+        <%= @opportunity.organisation.county if @opportunity.organisation.county %><br/>
+        <%= @opportunity.organisation.postcode %>
+        <br/>
       </div>
-    </div>
-    </div>
 
-      <div class="col-md-8 col-md-offset-2">
-        <hr>
-        <h4 class="subheading">About <%= @opportunity.organisation.name %></h4>
-
-        <p><%= @opportunity.organisation.description %></p>
-
+      <div class="col-md-4">
+        <p><b>Website</b></p>
+        <p><%= link_to @opportunity.organisation.website %></p>
+        <br/>
       </div>
     </div>
   </div>
+</div>
+
+ <div class="row">
+      <div class="col-md-8 col-md-offset-2 center">
+          <%= link_to "Edit Opportunity", edit_opportunity_path(@opportunity), class: "btn btn-primary form-button" %>
+          <br/><br/><br/>
+        </div>
+
+    </div>
+
+
 
 

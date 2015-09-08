@@ -9,8 +9,11 @@ class OrganisationsController < ApplicationController
    def create
     @organisation = Organisation.new(organisation_params)
     if @organisation.save
-      current_user.organisation_id = @organisation.id
-      flash[:info] = "You have completed the registration process."
+      p current_user.poster
+      p @organisation.id
+      current_user.poster.organisation_id = @organisation.id
+      current_user.poster.save
+      flash[:info] = "#{@organisation.name} has been successfully created."
       redirect_to root_url
     else
       render 'new'
@@ -23,10 +26,14 @@ class OrganisationsController < ApplicationController
   def index
   end
 
+  def show
+    @organisation = Organisation.find(params[:id])
+  end
+
   private
   def organisation_params
       params.require(:organisation).permit(:name, :address_1, :address_2, 
-                                   :town, :county, :postcode, :description, :website, :user_id, :classification_id, 
+                                   :town, :county, :postcode, :description, :website, :twitter, :user_id, :classification_id, 
                                    :district_ids => [], :interest_ids => [])
     end
 end

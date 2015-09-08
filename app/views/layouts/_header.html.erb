@@ -33,12 +33,15 @@
             <% if current_user.individual %>
             <li role="separator" class="divider hidden-xs hidden-sm"></li>
             <li><%= link_to "My Role Alerts", "#" %></li>
-            <% else %>
             <li role="separator" class="divider hidden-xs hidden-sm"></li>
-            <li><%= link_to "Post an Opportunity", "#" %></li>
+            <li><%= link_to "Settings", individual_path(current_user.individual.id) %></li>
+            <% elsif current_user.poster %>
+            <li role="separator" class="divider hidden-xs hidden-sm"></li>
+            <li><%= link_to "Settings", poster_path(current_user.poster.id) %></li>
+            <li role="separator" class="divider hidden-xs hidden-sm"></li>
+            <li><%= link_to "Post an Opportunity", new_opportunity_path %></li>
             <% end %>
-            <li role="separator" class="divider hidden-xs hidden-sm"></li>
-            <li><%= link_to "Settings", "#" %></li>
+            
             <li role="separator" class="divider hidden-xs hidden-sm"></li>
             <li><%= link_to "Log Out", logout_path, method: :delete %></li>
           </ul>

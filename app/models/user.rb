@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token, :activation_token, :reset_token
-  before_save :downcase_email
+  before_save :downcase_email, :upcase_name
   before_create :create_activation_digest
 
   has_one :individual, dependent: :destroy
@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates_presence_of :role, :first_name, :last_name
 
   accepts_nested_attributes_for :individual
 
@@ -72,6 +73,11 @@ class User < ActiveRecord::Base
 
   def downcase_email
     self.email = email.downcase
+  end
+
+  def upcase_name
+    self.first_name = first_name.downcase.capitalize
+    self.last_name = last_name.downcase.capitalize
   end
 
     def create_activation_digest

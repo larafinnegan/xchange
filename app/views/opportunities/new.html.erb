@@ -31,14 +31,14 @@
         <div class="form-group">
           <%= f.label :tasks, "* Primary duties", class: "col-md-4 control-label" %>
           <div class="col-md-6">
-          <%= f.text_area :tasks, class: "form-control", rows: "10", placeholder: "Please provide an overview of the primary responsibilities..." %>
+            <%= f.text_area :tasks, class: "form-control", rows: "10", placeholder: "Please provide an overview of the primary responsibilities..." %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :benefits, "* What we can offer you", class: "col-md-4 control-label" %>
+          <%= f.label :benefits, "* What we can offer volunteers", class: "col-md-4 control-label" %>
           <div class="col-md-6">
-            <%= f.text_field :benefits, class: "form-control" %>
+            <%= f.text_area :benefits, class: "form-control", rows: "5" %>
           </div>
         </div>
 
@@ -46,13 +46,6 @@
           <%= f.label :close, "* Closing Date", class: "col-md-4 control-label" %>
           <div class="col-md-6">
             <%= f.date_field :close, class: "form-control" %>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :additional_information, "Additional Information", class: "col-md-4 control-label" %>
-          <div class="col-md-6">
-            <%= f.text_area :additional_information, class: "form-control", rows: "5", placeholder: "Please include any additional information here..." %>
           </div>
         </div>
 
@@ -71,39 +64,90 @@
         </div>
         <br/>
 
-        
+
 
         <h4 class="subheading">Skills and Demographics</h4>
         <hr>
 
-<div class="form-group">
-          <%= f.label :skill_ids, "* Desired Skills", class: "checkbox-float col-md-4 control-label" %>
+        <div class="form-group">
+          <%= f.label :skill_ids, "* Desired Skills", class: "col-md-4 control-label" %>
           <div class="col-md-6">
             <%= f.collection_select :skill_ids, @skills, :id, :name, {prompt: "---"}, {multiple: true, class: "form-control"}   %>
           </div>
         </div>
-
-        <div class="form-group checkbox-float">
         <br/>
-          <%= f.label :under_18, class: "checkbox-float col-md-5 col-md-offset-1 control-label" do %>
-          <%= f.check_box :under_18 %>
-          <span class="checkbox-float">Under 18s?</span>
-          <% end %>
 
-          <%= f.label :reimburse_expenses, class: "checkbox-float col-md-5 control-label" do %>
-          <%= f.check_box :reimburse_expenses %>
-          <span class="checkbox-float">Reimburse expenses?</span>
-          <% end %>
+        <div class="form-group">
+          <label class="control-label col-md-4">Suitable for:</label>
+          <div class="col-sm-6">
 
-          <%= f.label :group, class: "checkbox-float col-md-5 col-md-offset-1 control-label" do %>
-          <%= f.check_box :group %>
-          <span class="checkbox-float">Suitable for groups?</span>
-          <% end %>
+            <div class="checkbox">
+              <%= f.label :under_18 do %>
+              <%= f.check_box :under_18 %>
+              <span>Under 18s?</span>
+              <% end %>
+            </div>
 
-          <%= f.label :expert, class: "checkbox-float col-md-5 control-label" do %>
-          <%= f.check_box :expert %>
-          <span class="checkbox-float">Expert?</span>
-          <% end %>
+
+            <div class="checkbox">
+              <%= f.label :group do %>
+              <%= f.check_box :group %>
+              <span>Groups?</span>
+              <% end %>
+            </div>
+
+            <div class="checkbox">
+              <%= f.label :expert do %>
+              <%= f.check_box :expert %>
+              <span>Expert?</span>
+              <% end %>
+            </div>
+
+            <div class="checkbox">
+              <%= f.label :reimburse_expenses do %>
+              <%= f.check_box :reimburse_expenses %>
+              <span>Reimburse expenses?</span>
+              <% end %>
+            </div>
+          </div>
+        </div> <!-- /.form-group -->
+<br/>
+<h4 class="subheading">Primary Contact Information</h4>
+        <hr>
+
+<div class="form-group">
+          <%= f.label :first_name, "* First Name", class: "col-md-4 control-label" %>
+          <div class="col-md-6">
+            <%= f.text_field :first_name, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :last_name, "* Last Name", class: "col-md-4 control-label" %>
+          <div class="col-md-6">
+            <%= f.text_field :last_name, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :title, "* Job Title", class: "col-md-4 control-label" %>
+          <div class="col-md-6">
+            <%= f.text_field :title, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email, "* Email", class: "col-md-4 control-label" %>
+          <div class="col-md-6">
+            <%= f.text_field :email, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :phone, "* Phone", class: "col-md-4 control-label" %>
+          <div class="col-md-6">
+            <%= f.text_field :phone, class: "form-control" %>
+          </div>
         </div>
 
       </div>
@@ -112,7 +156,7 @@
     <div class="row">
       <div class="col-md-4 col-md-offset-5">
         <div class="form-group">
-          <%= f.submit "Update Account", class: "btn btn-primary form-button" %>
+          <%= f.submit "Create Opportunity", class: "btn btn-primary form-button" %>
         </div>
       </div>
     </div>

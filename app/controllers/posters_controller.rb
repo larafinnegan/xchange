@@ -5,6 +5,7 @@ class PostersController < ApplicationController
   end
 
   def edit
+    @poster = Poster.find(params[:id])
   end
 
   def create
@@ -19,6 +20,7 @@ class PostersController < ApplicationController
   end
 
   def show
+    @poster = Poster.find(params[:id])
   end
 
   private

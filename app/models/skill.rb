@@ -2,4 +2,6 @@ class Skill < ActiveRecord::Base
 
   has_and_belongs_to_many :individuals
   has_and_belongs_to_many :opportunities
+
+  validates :name, presence: true
 end
