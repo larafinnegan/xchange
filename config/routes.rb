@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
 
+  get 'searches/new'
+
+  get 'searches/edit'
+
+  get 'searches/show'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
 
   get 'sessions/new'
 
-  resources :users, :individuals, :organisations, :opportunities, :posters
+  resources :users, :individuals, :organisations, :opportunities, :posters, :searches
 
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'

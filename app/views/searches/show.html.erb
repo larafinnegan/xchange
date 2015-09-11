@@ -1,0 +1,7 @@
+<% if @search.opportunities.empty? %>
+<p>Your search returned no results.</p>
+<% else %>
+<% @search.opportunities.each do |o| %>
+<p><%= o.name %></p>
+<% end %>
+<% end %>

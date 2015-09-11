@@ -45,13 +45,17 @@ class OpportunitiesController < ApplicationController
 
   def index
     @opportunities = Opportunity.all
+    @skills = Skill.all
+    @interests = Interest.all
   end
 
+  private
+
   def opportunity_params
-      params.require(:opportunity).permit(:name, :last_name, :title, :email,
-                                   :phone, :town, :postcode, :additional_skills, :first_name, :last_name, 
-                                   :organisation_id, :tasks, :commitment, :close, :expire, :benefits,
+      params.require(:opportunity).permit(:name, :title, :email, :phone, :town, 
+                                    :postcode, :additional_skills, :first_name, :last_name, 
+                                   :organisation_id, :tasks, :commitment, :close, :benefits,
                                    :reimburse_expenses, :additional_information, :under_18,
-                                   :expert, :general, :group, :skill_ids => [])
+                                   :expert, :group, :skill_ids => [])
     end
 end

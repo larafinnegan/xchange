@@ -5,7 +5,7 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.email %>
-        <%= @user.role %>sdfsdf
+        <%= link_to "Delete", @user, method: :delete %>
       </h1>
     </section>
   </aside>

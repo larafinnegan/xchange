@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907231729) do
+ActiveRecord::Schema.define(version: 20150910232118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,14 @@ ActiveRecord::Schema.define(version: 20150907231729) do
     t.integer "interest_id"
     t.integer "organisation_id"
   end
+
+  create_table "interests_searches", id: false, force: :cascade do |t|
+    t.integer "interest_id", null: false
+    t.integer "search_id",   null: false
+  end
+
+  add_index "interests_searches", ["interest_id"], name: "index_interests_searches_on_interest_id", using: :btree
+  add_index "interests_searches", ["search_id"], name: "index_interests_searches_on_search_id", using: :btree
 
   create_table "opportunities", force: :cascade do |t|
     t.string   "name"
@@ -134,6 +142,27 @@ ActiveRecord::Schema.define(version: 20150907231729) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "searches", force: :cascade do |t|
+    t.string   "name"
+    t.string   "postcode"
+    t.boolean  "expert"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.boolean  "under_18"
+    t.boolean  "group"
+  end
+
+  add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree
+
+  create_table "searches_skills", id: false, force: :cascade do |t|
+    t.integer "search_id", null: false
+    t.integer "skill_id",  null: false
+  end
+
+  add_index "searches_skills", ["search_id"], name: "index_searches_skills_on_search_id", using: :btree
+  add_index "searches_skills", ["skill_id"], name: "index_searches_skills_on_skill_id", using: :btree
+
   create_table "skills", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -164,4 +193,5 @@ ActiveRecord::Schema.define(version: 20150907231729) do
   add_foreign_key "organisations", "classifications"
   add_foreign_key "posters", "organisations"
   add_foreign_key "posters", "users"
+  add_foreign_key "searches", "users"
 end

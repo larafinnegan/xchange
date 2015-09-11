@@ -54,6 +54,7 @@
     <% @opportunity.skills.each do |s| %>
     <li><%= s.name %></li>
     <% end %>
+    <br/>
   </div>
 </div>
 
@@ -155,10 +156,18 @@
 
       <div class="col-md-4">
         <p><b>Address</b></p>
-        <%= @opportunity.organisation.address_1 if @opportunity.organisation.address_1 %><br/>
-        <%= @opportunity.organisation.address_2 if @opportunity.organisation.address_2 %><br/>
-        <%= @opportunity.organisation.town if @opportunity.organisation.town %><br/>
-        <%= @opportunity.organisation.county if @opportunity.organisation.county %><br/>
+        <% if @opportunity.organisation.address_1 %>
+        <%= @opportunity.organisation.address_1 %><br/>
+        <% end %>
+        <% if @opportunity.organisation.address_2 %>
+        <%= @opportunity.organisation.address_2 %><br/>
+        <% end %>
+        <% if @opportunity.organisation.town %>
+        <%= @opportunity.organisation.town %><br/>
+        <% end %>
+        <% if @opportunity.organisation.county %>
+        <%= @opportunity.organisation.county  %>
+        <% end %>
         <%= @opportunity.organisation.postcode %>
         <br/>
       </div>

@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_one :individual, dependent: :destroy
   has_one :poster, dependent: :destroy
   has_many :opportunities
+  has_many :searches, dependent: :destroy
 
   has_secure_password
 
