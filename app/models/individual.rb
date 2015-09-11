@@ -1,3 +1,5 @@
+require 'postcodes_io'
+
 class Individual < ActiveRecord::Base
 
   before_save :upcase_fields
@@ -6,11 +8,22 @@ class Individual < ActiveRecord::Base
   has_and_belongs_to_many :interests
   has_and_belongs_to_many :skills
 
-  validates :postcode, presence: true
+  validate :validate_postcode
+
+  def validate_postcode
+    unless self.postcode 
+      return errors.add(:postcode, "Postcode cannot be blank") 
+    end
+      a = Postcodes::IO.new
+      b = a.lookup(postcode) 
+      self.postcode = b.postcode
+  end
 
   private
+  
+
+
   def upcase_fields
-    self.postcode = postcode.upcase
     self.town = town.downcase.capitalize  
   end
 end

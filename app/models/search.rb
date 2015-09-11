@@ -6,38 +6,26 @@ class Search < ActiveRecord::Base
   def opportunities
     p "kkkkkkkkkkkkkkkkkkkkkk"
     o = Opportunity.all
-    o = o.where('under_18 = ?', true) if under_18
-    p o
-    o = o.where('group = ?', true) if group
-    p o
-    o = o.where('expert = ?', true) if expert
-    p o
+    o = o.where(group: true) if group
+    o = o.where(under_18: true) if under_18
+    o = o.where(expert: true) if expert
     o = o.joins(:skills).where('skill_id in (?)', skill_ids) unless skill_ids.empty?
-    p o
     o = o.joins(:interests).where('interest_id in (?)', interest_ids) unless interest_ids.empty?
     p o
   end
 
 private
   def under_18_conditions
-    
+    ['under_18 = ?', true] if under_18
   end
 
 
    def group_conditions
-    
+    ['group = ?', true] if group
   end
 
    def expert_conditions
-    
-  end
-
-  def skill_condition
-
-  end
-
-  def interest_condition
-
+    ['expert = ?', true] if expert
   end
 
   def conditions
