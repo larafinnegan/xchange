@@ -1,0 +1,64 @@
+
+<hr>
+<div class="row full-form">
+  <div class="col-md-10 col-md-offset-1">
+    <%= form_for(@search) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div class="form-group">
+      <%= f.label :postcode, "Search by location", class: "control-label" %>
+      <%= f.text_field :postcode, class: "form-control", placeholder: "Please enter a postcode" %>
+      </div>
+
+  <div class="form-group">
+  <%= f.label :distance, "Within how many km?", class: "control-label" %>&nbsp;
+      <%= f.select :distance, ((1..20).to_a), include_blank: true %>
+      </div>
+    <hr>
+
+    <div class="form-group">
+      <%= f.label :skill_ids, "Skills", class: "control-label" %>
+      <%= f.collection_select :skill_ids, @skills, :id, :name, {prompt: "---"}, {multiple: true, class: "form-control"}   %>
+    </div>
+    <hr>
+
+    <div class="form-group">
+      <%= f.label :interest_ids, "Interests", class: "control-label" %>
+      <%= f.collection_select :interest_ids, @interests, :id, :name, {prompt: "---"}, {multiple: true, class: "form-control"}   %>
+    </div>
+    <hr>
+
+    <div class="form-group">
+      <div>Suitable for:</div>
+      <div class="checkbox">
+        <%= f.label :under_18 do %>
+        <%= f.check_box :under_18 %>
+        <span>Under 18s?</span>
+        <% end %>
+        </div>
+
+      <div class="checkbox">
+        <%= f.label :group do %>
+        <%= f.check_box :group %>
+        <span>Groups?</span>
+        <% end %>
+      </div>
+
+      <div class="checkbox">
+        <%= f.label :expert do %>
+        <%= f.check_box :expert %>
+        <span>Expert?</span>
+        <% end %>
+      </div>
+    </div> <!-- /.form-group -->
+
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="form-group">
+      <%= f.submit "Search", class: "btn btn-primary form-button" %>
+    </div>
+    </div>
+    </div>
+    <% end %>
+  </div>
+</div>

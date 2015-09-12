@@ -3,29 +3,32 @@ class SearchesController < ApplicationController
     @search = Search.new
     @skills = Skill.all
     @interests = Interest.all
+    @opportunities = Opportunity.all
   end
 
-  def create
-    @search = current_user.searches.build(search_params)
+ def create
+    @search = Search.new(search_params)
     if @search.save
-      redirect_to @search
+      redirect_to edit_search_path(@search)
     else
-      render 'new'
+      render :new
     end
   end
 
   def edit
+    @skills = Skill.all
+    @interests = Interest.all
+    @search = Search.find(params[:id])
   end
 
   def index
   end
 
   def show
-    @search = Search.find(params[:id])
   end
 
   def search_params
       params.require(:search).permit(:name, :postcode, :last_name, :under_18,
-                                   :expert, :group, :skill_ids => [], :interest_ids => [])
+                                   :distance, :expert, :group, :skill_ids => [], :interest_ids => [])
     end
 end

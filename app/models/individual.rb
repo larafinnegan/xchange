@@ -1,5 +1,3 @@
-require 'postcodes_io'
-
 class Individual < ActiveRecord::Base
 
   before_save :upcase_fields
@@ -7,7 +5,6 @@ class Individual < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :interests
   has_and_belongs_to_many :skills
-
   validate :validate_postcode
 
   def validate_postcode
@@ -16,14 +13,18 @@ class Individual < ActiveRecord::Base
     end
       a = Postcodes::IO.new
       b = a.lookup(postcode) 
-      self.postcode = b.postcode
+      if b.nil?
+        return errors.add(:postcode, "#{postcode.upcase} is not a valid postcode.") 
+      else
+        self.postcode = b.postcode
+        self.lat = b.latitude
+        self.lng = b.longitude
+      end
   end
 
   private
   
-
-
   def upcase_fields
-    self.town = town.downcase.capitalize  
+    self.town = town.split.map! {|w| w.downcase.capitalize}.join(" ")
   end
 end

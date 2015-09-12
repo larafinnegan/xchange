@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910232118) do
+ActiveRecord::Schema.define(version: 20150912001109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,12 +35,14 @@ ActiveRecord::Schema.define(version: 20150910232118) do
 
   create_table "individuals", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.string   "phone"
     t.text     "additional_skills"
     t.string   "town"
     t.string   "postcode"
+    t.decimal  "lat",               precision: 10, scale: 6
+    t.decimal  "lng",               precision: 10, scale: 6
   end
 
   add_index "individuals", ["user_id"], name: "index_individuals_on_user_id", using: :btree
@@ -151,6 +153,7 @@ ActiveRecord::Schema.define(version: 20150910232118) do
     t.integer  "user_id"
     t.boolean  "under_18"
     t.boolean  "group"
+    t.integer  "distance"
   end
 
   add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree

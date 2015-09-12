@@ -1,0 +1,30 @@
+<hr>
+<% if @search.opportunities.empty? %>
+<p>Your search returned no results.</p>
+<% else %>
+  <% @search.opportunities.each do |o| %>
+<div class="row">
+  <div class="col-md-6 col-xs-6 col-sm-6 search-pane-left">
+    <h4 class="search-title">
+      <%= link_to o.name, opportunity_path(o), class: "search-title" %>
+    </h4>
+    <h5 class="search-title">
+      <%= link_to o.organisation.name, organisation_path(o.organisation), class: "search-title" %>
+    </h5>
+    <p><span class="glyphicon glyphicon-map-marker"></span> <%= o.town %>&nbsp;<%= o.postcode %></p>
+  </div>
+
+  <div class="col-md-6 col-xs-6 col-sm-6 search-pane-right">
+    <p>
+      <span class="glyphicon glyphicon-time"></span> 
+      Posted <%= time_ago_in_words(o.created_at) %> ago
+    </p>
+    <%= button_to('View', opportunity_path(o) , class: 'btn btn-sm view-button')  %>
+  </div>
+
+
+  </div>
+  
+  <hr>
+  <% end %>
+<% end %>

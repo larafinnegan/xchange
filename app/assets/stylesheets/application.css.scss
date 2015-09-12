@@ -374,3 +374,53 @@ text-decoration: none;
 .top-pad {
   padding-top: 2%;
 }
+
+.search-pane-right {
+  text-align: right;
+}
+
+.view-button {
+  background-color: #ee4036;
+  color: white;
+  border: none;
+}
+
+.search-pane-left {
+  vertical-align: top;
+  padding-left: 4%;
+  
+}
+
+.search-title {
+  padding: 0;
+  margin-bottom: 2%;
+  margin-top: 0;
+  margin-right: 0;
+  margin-left: 0;
+  color: #252161;
+  text-decoration: none;
+}
+
+.search-title:visited {
+  color: #252161;
+  text-decoration: none;
+}
+
+.search-title:hover {
+  color: #ee4036;
+  text-decoration: none;
+}
+
+.search-title:active {
+  color: #ee4036;
+  text-decoration: none;
+}
+
+.form-header2 {
+  color: white;
+  text-align: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #ee4036;
+}
+
