@@ -1,12 +1,79 @@
+<h2 class="form-header"><%= @user.first_name %>'s Profile</h2>
 
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.email %>
-        <%= link_to "Delete", @user, method: :delete %>
-      </h1>
-    </section>
-  </aside>
+<div class="col-md-6 col-md-offset-3">
+    <h4 class="subheading">Account Details</h4>
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-3">
+    <p><b>Name</b></p>
+  </div>
+
+  <div class="col-md-5">
+    <p><%= @user.first_name %> <%= @user.last_name %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-3">
+    <p><b>Email</b></p>
+  </div>
+
+  <div class="col-md-5">
+    <p><%= @user.email %></p>
+  </div>
+</div>
+
+<% if @user.poster %>
+<div class="row">
+  <div class="col-md-2 col-md-offset-3">
+    <p><b>Job Title</b></p>
+  </div>
+
+  <div class="col-md-5">
+    <p><%= @user.poster.title %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-3">
+    <p><b>Phone</b></p>
+  </div>
+
+  <div class="col-md-5">
+    <p><%= @user.poster.phone %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-3">
+    <p><b>Mobile</b></p>
+  </div>
+
+  <div class="col-md-5">
+    <p><%= @user.poster.mobile %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-3">
+    <p><b>Associated Organisation</b></p>
+  </div>
+
+  <div class="col-md-5">
+    <p><%= @user.poster.organisation.name %></p>
+  </div>
+</div>
+<% end %>
+
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 center">
+    <%= link_to "Edit Details", edit_user_path(@user), class: "btn btn-primary form-button" %>
+    <br/><br/><br/>
+  </div>
+
 </div>

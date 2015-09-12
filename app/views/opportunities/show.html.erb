@@ -170,6 +170,7 @@
         <% end %>
         <%= @opportunity.organisation.postcode %>
         <br/>
+        <br/>
       </div>
 
       <div class="col-md-4">
@@ -183,7 +184,16 @@
 
  <div class="row">
       <div class="col-md-8 col-md-offset-2 center">
+      <% if logged_in? %>
+        <% if current_user.poster %>
           <%= link_to "Edit Opportunity", edit_opportunity_path(@opportunity), class: "btn btn-primary form-button" %>
+          <% elsif current_user.individual %>
+            <%= link_to "Apply", '#', class: "btn btn-primary form-button" %>
+          <% end %>
+        <% else %>
+        <br/><br/><br/>
+        <p>To apply, please <%= link_to "Log In", login_path %> or <%= link_to 'Register', new_user_path %>.
+        <% end %>
           <br/><br/><br/>
         </div>
 

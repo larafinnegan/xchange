@@ -17,7 +17,7 @@
       <span class="glyphicon glyphicon-time"></span> 
       Posted <%= time_ago_in_words(o.created_at) %> ago
     </p>
-    <%= button_to('View', opportunity_path(o) , class: 'btn btn-sm view-button')  %>
+    <%= link_to "View", opportunity_path(o), class: "btn btn-sm form-button" %>
   </div>
 
 

@@ -1,1 +1,128 @@
-<%= @organisation.name %>
+<h2 class="form-header"><%= @organisation.name %></h2>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h4 class="subheading">About <%= @organisation.name %></h4>
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-2">
+    <p><b>Description</b></p>
+  </div>
+
+  <div class="col-md-6">
+    <p><%= @organisation.description %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-2">
+    <p><b>Contacts</b></p>
+  </div>
+
+  <div class="col-md-6">
+  <ul>
+    <% @organisation.poster.each do |p| %>
+      <li><%= p.user.first_name %> <%= p.user.last_name %>, <%= p.title %>, <%= p.phone %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <hr>
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <p><b>Interests</b></p>
+        <% @organisation.interests.each do |i| %>
+        <li><%= i.name %></li>
+        <% end %>
+        <br/>
+      </div>
+
+      <div class="col-md-4">
+        <p><b>Address</b></p>
+        <% if @organisation.address_1 %>
+        <%= @organisation.address_1 %><br/>
+        <% end %>
+        <% if @organisation.address_2 %>
+        <%= @organisation.address_2 %><br/>
+        <% end %>
+        <% if @organisation.town %>
+        <%= @organisation.town %><br/>
+        <% end %>
+        <% if @organisation.county %>
+        <%= @organisation.county  %>
+        <% end %>
+        <%= @organisation.postcode %>
+        <br/>
+        <br/>
+      </div>
+
+      <div class="col-md-4">
+        <p><b>Website</b></p>
+        <p><%= link_to @organisation.website %></p>
+        <br/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 center">
+    <% if logged_in? %>
+    <% if current_user.poster.organisation_id == @organisation.id %>
+    <%= link_to "Edit Organisation", edit_organisation_path(@organisation), class: "btn btn-primary form-button" %>
+    <% end %>
+    <% end %>
+    <br/><br/><br/>
+  </div>
+
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h4 class="subheading">Current Opportunities</h4>
+  </div>
+</div>
+
+
+<% unless @organisation.opportunities.empty? %>
+  <% @organisation.opportunities.each do |o| %>
+  <hr class="col-md-8 col-xs-8 col-sm-8 col-md-offset-2">
+<div class="row">
+  <div class="col-md-4 col-xs-4 col-sm-4 col-md-offset-2 search-pane-left">
+    <h4 class="search-title">
+      <%= link_to o.name, opportunity_path(o), class: "search-title" %>
+    </h4>
+    <h5 class="search-title">
+      <%= link_to @organisation.name, organisation_path(@organisation), class: "search-title" %>
+    </h5>
+    <p><span class="glyphicon glyphicon-map-marker"></span> <%= o.town %>&nbsp;<%= o.postcode %></p>
+  </div>
+
+  <div class="col-md-4 col-xs-4 col-sm-4 search-pane-right">
+    <p>
+      <span class="glyphicon glyphicon-time"></span> 
+      Posted <%= time_ago_in_words(o.created_at) %> ago
+    </p>
+    <%= link_to "View", opportunity_path(o), class: "btn btn-sm form-button" %>
+  </div>
+  </div>
+
+  <% end %>
+<% end %>
+<hr class="col-md-8 col-xs-8 col-sm-8 col-md-offset-2">
+
+
+
+
+

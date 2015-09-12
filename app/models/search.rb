@@ -11,7 +11,7 @@ class Search < ActiveRecord::Base
     o = o.where(expert: true) if expert
     o = o.joins(:skills).where('skill_id in (?)', skill_ids) unless skill_ids.empty?
     o = o.joins(:interests).where('interest_id in (?)', interest_ids) unless interest_ids.empty?
-    p o
+    o.uniq
   end
 
 private

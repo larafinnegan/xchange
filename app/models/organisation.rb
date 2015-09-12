@@ -2,7 +2,7 @@ class Organisation < ActiveRecord::Base
 
   before_save :capitalize_fields
 
-  has_one :poster
+  has_many :poster
   has_one :classifcation
   has_many :opportunities, dependent: :destroy
   has_and_belongs_to_many :districts

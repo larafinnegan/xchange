@@ -43,7 +43,7 @@ module SessionsHelper
   end
 
   def registered?
-    current_user.organisation || current_user.individual
+    current_user.poster || current_user.individual
   end
 
   # Redirects to stored location (or to the default).

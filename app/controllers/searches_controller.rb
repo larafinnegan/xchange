@@ -21,10 +21,13 @@ class SearchesController < ApplicationController
     @search = Search.find(params[:id])
   end
 
-  def index
-  end
-
-  def show
+  def update
+    @search = Search.find(params[:id])
+    if @search.update_attributes(search_params)
+      redirect_to edit_search_path(@search)
+    else
+      render :edit
+    end
   end
 
   def search_params
