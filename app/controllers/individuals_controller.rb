@@ -12,6 +12,8 @@ class IndividualsController < ApplicationController
   end
 
   def create
+    @skills = Skill.all
+    @interests = Interest.all
     @individual = Individual.new(individual_params)
     @individual.user_id = current_user.id
     if @individual.save

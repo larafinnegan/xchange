@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
 
-  get 'searches/new'
-
-  get 'searches/edit'
-
-  get 'searches/show'
-
-  get 'password_resets/new'
-
-  get 'password_resets/edit'
-
   get 'sessions/new'
+
+   namespace :admin do
+    resources :users, :individuals, :organisations, :opportunities, :applications,
+    :posters, :searches, :applications, :skills, :classifications, :districts, :interests
+  end
+
+     resources :opportunities do
+    resources :applications, only: [:new, :create]
+    end 
 
   resources :users, :individuals, :organisations, :opportunities, :posters, :searches, :applications
 

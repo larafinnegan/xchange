@@ -1,0 +1,37 @@
+<h2 class="form-header"><%= current_user.first_name%>'s Applications</h2>
+
+<% if @applications.empty? %>
+<p>You have not submitted any applications.</p>
+<% else %>
+<table class="table table-bordered table-striped" id="sortable">
+  <thead>
+    <tr>
+      <th>
+        Role Title
+      </th>
+      <th>
+        Location
+      </th>
+      <th>
+        Date Applied
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @applications.each do |a| %>
+      <tr data-item-id=<%= "sdfsf" %> class="item">
+        <td>
+          <%= link_to a.opportunity.name, opportunity_path(a.opportunity) %>
+        </td>
+        <td>
+          <%= a.opportunity.town %>, <% a.opportunity.postcode %>
+        </td>
+        <td>
+          <%= o.created_at.strftime("%b %d, %Y") %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>

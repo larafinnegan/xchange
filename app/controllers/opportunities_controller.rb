@@ -44,9 +44,8 @@ class OpportunitiesController < ApplicationController
   end
 
   def index
-    @opportunities = Opportunity.all
-    @skills = Skill.all
-    @interests = Interest.all
+    @opportunities = current_user.poster.organisation.opportunities.all
+    @organisation = current_user.poster.organisation
   end
 
   private

@@ -188,7 +188,7 @@
         <% if current_user.poster %>
           <%= link_to "Edit Opportunity", edit_opportunity_path(@opportunity), class: "btn btn-primary form-button" %>
           <% elsif current_user.individual %>
-            <%= link_to "Apply", '#', class: "btn btn-primary form-button" %>
+            <%= link_to "Apply", new_opportunity_application_path(@opportunity), class: "btn btn-primary form-button" %>
           <% end %>
         <% else %>
         <br/><br/><br/>

@@ -1,0 +1,29 @@
+<h2 class="form-header">Apply for <%= @application.opportunity.name %></h2>
+
+<div class="row full-form">
+  <div class="col-md-12">
+    <%= form_for(@application, html: { class: 'form-horizontal' }) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+
+      <div class="form-group">
+          <%= f.label :cover_letter, "Cover Letter", class: "col-md-3 control-label" %>
+          <div class="col-md-7">
+          <%= f.text_area :cover_letter, class: "form-control", rows: "10", placeholder: "Please provide any additional information about your skills or interests..." %>
+        </div>
+        </div>
+
+        <div class="form-group">
+<%= f.label :resume, "Upload your resume", class: "col-md-3 control-label" %>
+          <div class="col-md-7">
+        <%= f.file_field :resume, class: "form-control" %>
+        </div>
+        </div>
+        <% end %>
+        </div>
+        </div>
+
+
+
+
+

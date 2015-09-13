@@ -21,6 +21,7 @@ class OrganisationsController < ApplicationController
   end
 
   def edit
+    @organisation = Organisation.find(params[:id])
   end
 
   def index

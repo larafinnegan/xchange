@@ -1,0 +1,10 @@
+Hi <%= @application.opportunity.first_name %>,
+
+A new application has been submitted for <%= link_to @application.opportunity.name, opportunity_url(@application.opportunity) %>.
+
+Applicant Details:
+<%= @application.individual.first_name %> <%= @application.individual.first_name %>
+<%= @application.individual.email %>
+<%= @application.individual.phone %>
+<%@application.individual.skills.each do |s| %>
+      <% s.name %>

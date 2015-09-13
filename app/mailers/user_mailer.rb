@@ -10,8 +10,9 @@ class UserMailer < ApplicationMailer
     mail to: user.email, subject: "Password reset"
   end
 
-  def submit_application(user)
-    @user = user
-    mail to: user.email, subject: "New Application for "
+  def submit_app(application, file, filename)
+    attachments[filename] = file
+    @application = application
+    mail to: application.opportunity.email, subject: "New Application for #{application.opportunity.name}"
   end
 end

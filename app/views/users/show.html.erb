@@ -69,6 +69,36 @@
 </div>
 <% elsif  @user.poster %>
 
+<div class="row">
+  <div class="col-md-2 col-md-offset-3">
+    <p><b>Phone</b></p>
+  </div>
+
+  <div class="col-md-5">
+    <p><%= @user.individual.phone %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-3">
+    <p><b>Town</b></p>
+  </div>
+
+  <div class="col-md-5">
+    <p><%= @user.individual.town %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-3">
+    <p><b>Postcode</b></p>
+  </div>
+
+  <div class="col-md-5">
+    <p><%= @user.individual.postcode %></p>
+  </div>
+</div>
+
 <% end %>
 
 
