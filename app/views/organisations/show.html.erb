@@ -23,11 +23,9 @@
   </div>
 
   <div class="col-md-6">
-  <ul>
     <% @organisation.poster.each do |p| %>
-      <li><%= p.user.first_name %> <%= p.user.last_name %>, <%= p.title %>, <%= p.phone %></li>
+      <p><%= p.user.first_name %> <%= p.user.last_name %>, <%= p.title %>, <%= p.phone %></p>
     <% end %>
-    </ul>
   </div>
 </div>
 
@@ -67,7 +65,7 @@
 
       <div class="col-md-4">
         <p><b>Website</b></p>
-        <p><%= link_to @organisation.website %></p>
+        <p><%= link_to @organisation.website, "http://#{@organisation.website}", target: "_blank", class: "red" %></p>
         <br/>
       </div>
     </div>
@@ -114,7 +112,7 @@
       <span class="glyphicon glyphicon-time"></span> 
       Posted <%= time_ago_in_words(o.created_at) %> ago
     </p>
-    <%= link_to "View", opportunity_path(o), class: "btn btn-sm form-button" %>
+    <%= link_to "View", opportunity_path(o), class: "btn btn-sm view-button" %>
   </div>
   </div>
 

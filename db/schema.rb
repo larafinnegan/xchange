@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150912001109) do
+ActiveRecord::Schema.define(version: 20150913012802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applications", force: :cascade do |t|
+    t.integer  "individual_id"
+    t.integer  "opportunity_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "applications", ["individual_id"], name: "index_applications_on_individual_id", using: :btree
+  add_index "applications", ["opportunity_id"], name: "index_applications_on_opportunity_id", using: :btree
 
   create_table "classifications", force: :cascade do |t|
     t.string   "name"
@@ -190,6 +200,8 @@ ActiveRecord::Schema.define(version: 20150912001109) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "applications", "individuals"
+  add_foreign_key "applications", "opportunities"
   add_foreign_key "individuals", "users"
   add_foreign_key "opportunities", "organisations"
   add_foreign_key "opportunities", "users"

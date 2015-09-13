@@ -11,8 +11,8 @@
       </div>
 
   <div class="form-group">
-  <%= f.label :distance, "Within how many km?", class: "control-label" %>&nbsp;
-      <%= f.select :distance, ((1..20).to_a), include_blank: true %>
+  <%= f.label :distance, "Within how many km?", class: "control-label" %>
+      <%= f.select :distance, [['within 5 km', 5], ['within 10 km', 10], ['within 15 km', 15], ['within 20 km', 20]], {prompt: "select distance"}, {class: "form-control"} %>
       </div>
     <hr>
 

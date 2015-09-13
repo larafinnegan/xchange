@@ -311,6 +311,28 @@ body {
   background-color: #ee4036;
   margin-top: 5%;
   border: none;
+  color: white;
+}
+
+.form-button:visited {
+  background-color: #ee4036;
+  margin-top: 5%;
+  border: none;
+  color: white;
+}
+
+.form-button:hover {
+  background-color: #252161;
+  margin-top: 5%;
+  border: none;
+  color: white;
+}
+
+.form-button:active {
+  background-color: #ee4036;
+  margin-top: 5%;
+  border: none;
+  color: white;
 }
 
 .checkbox {
@@ -380,7 +402,29 @@ text-decoration: none;
 }
 
 .view-button {
+  margin-top: 1%;
   background-color: #ee4036;
+  color: white;
+  border: none;
+}
+
+.view-button:visited{
+  margin-top: 1%;
+  background-color: #ee4036;
+  color: white;
+  border: none;
+}
+
+.view-button:hover {
+  margin-top: 1%;
+  background-color: #252161;
+  color: white;
+  border: none;
+}
+
+.view-button:active {
+  margin-top: 1%;
+  background-color: #252161;
   color: white;
   border: none;
 }
@@ -423,4 +467,3 @@ text-decoration: none;
   padding-bottom: 12px;
   background-color: #ee4036;
 }
-

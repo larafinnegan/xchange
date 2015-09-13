@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
-  resources :users, :individuals, :organisations, :opportunities, :posters, :searches
+  resources :users, :individuals, :organisations, :opportunities, :posters, :searches, :applications
 
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'

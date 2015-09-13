@@ -2,7 +2,7 @@
   <div class="col-md-8 col-md-offset-2">
     <h2 class="subheading top-pad"><%= @opportunity.name %></h2>
 
-    <h4><%= link_to @opportunity.organisation.name, @opportunity.organisation %></h4>
+    <h4><%= link_to @opportunity.organisation.name, @opportunity.organisation, class: "red" %></h4>
     <p><%= @opportunity.town %> &nbsp; |  &nbsp;&nbsp;Posted on <%= @opportunity.created_at.strftime("%b %d, %Y") %></p>
   </div>
 
@@ -78,7 +78,7 @@
   <div class="col-md-6">
     <span><%= @opportunity.first_name %> <%= @opportunity.last_name %></span><br/>
     <span><%= @opportunity.title %></span><br/>
-     <span><%= mail_to @opportunity.email %></span><br/>
+     <span class="red"><%= mail_to @opportunity.email, @opportunity.email, {class: "red"} %></span><br/>
       <span><%= @opportunity.phone %></span>
 
   </div>
@@ -175,7 +175,7 @@
 
       <div class="col-md-4">
         <p><b>Website</b></p>
-        <p><%= link_to @opportunity.organisation.website %></p>
+        <p><%= link_to @opportunity.organisation.website, "http://#{@opportunity.organisation.website}", target: "_blank", class: "red" %></p>
         <br/>
       </div>
     </div>
@@ -192,7 +192,7 @@
           <% end %>
         <% else %>
         <br/><br/><br/>
-        <p>To apply, please <%= link_to "Log In", login_path %> or <%= link_to 'Register', new_user_path %>.
+        <p>To apply, please <%= link_to "Log In", login_path, class: "red" %> or <%= link_to 'Register', new_user_path, class: "red" %>.
         <% end %>
           <br/><br/><br/>
         </div>
