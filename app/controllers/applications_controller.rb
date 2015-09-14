@@ -7,9 +7,10 @@ class ApplicationsController < ApplicationController
 
   def create
     opportunity = Opportunity.find(params[:opportunity_id])
-    @application = opportunity.applications.build(params[:application_params])
+    @application = opportunity.applications.build(application_params)
+    @application.individual_id = current_user.individual.id
     if @application.save
-      @application.submit_application_email
+      UserMailer.submit_app(@application, @application.resume.read(), @application.resume.original_filename).deliver
       flash[:info] = "Your application has been successfully submitted."
       redirect_to opportunity_path(opportunity)
     else
@@ -23,7 +24,8 @@ class ApplicationsController < ApplicationController
 
   private 
 
-
-
+  def application_params
+    params.require(:application).permit(:cover_letter, :resume)
+  end
 
 end
