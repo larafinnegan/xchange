@@ -1,2 +1,3 @@
-<h1>Organisations#edit</h1>
-<p>Find me in app/views/organisations/edit.html.erb</p>
+<% provide(:title, "Edit #{@organisation.name}") %>
+<h2 class="form-header">Edit <%= @organisation.name %></h2>
+    <%= render 'organisations/org_fields' %>

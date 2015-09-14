@@ -22,6 +22,19 @@ class OrganisationsController < ApplicationController
 
   def edit
     @organisation = Organisation.find(params[:id])
+    @classifications = Classification.all
+    @districts = District.all
+    @interests = Interest.all
+  end
+
+  def update
+     @organisation = Organisation.find(params[:id])
+    if @organisation.update_attributes(organisation_params)
+      flash[:success] = "Organisation updated successfully."
+      redirect_to @organisation
+    else
+      render 'edit'
+    end
   end
 
   def index
@@ -34,7 +47,7 @@ class OrganisationsController < ApplicationController
   private
   def organisation_params
       params.require(:organisation).permit(:name, :address_1, :address_2, 
-                                   :town, :county, :postcode, :description, :website, :twitter, :user_id, :classification_id, 
-                                   :district_ids => [], :interest_ids => [])
+                                   :town, :county, :postcode, :description, :website, :twitter, :user_id, 
+                                   :classification_id, :district_ids => [], :interest_ids => [])
     end
 end
