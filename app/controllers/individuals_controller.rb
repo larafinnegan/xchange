@@ -8,6 +8,17 @@ class IndividualsController < ApplicationController
   def edit
   end
 
+  def update
+    @user = current_user
+    @individual = current_user.individual
+    if @individual.update_attributes(individual_params)
+      flash[:success] = "Profile updated successfully."
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
   def index
   end
 

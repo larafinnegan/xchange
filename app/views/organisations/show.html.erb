@@ -66,7 +66,6 @@
       <div class="col-md-4">
         <p><b>Website</b></p>
         <p><%= link_to @organisation.website, "http://#{@organisation.website}", target: "_blank", class: "red" %></p>
-        <br/>
       </div>
     </div>
   </div>
@@ -74,7 +73,7 @@
 
 <div class="row">
   <div class="col-md-10 col-md-offset-1 center">
-    <% if logged_in? %>
+    <% if logged_in? && current_user.poster %>
     <% if current_user.poster.organisation_id == @organisation.id %>
     <%= link_to "Edit Organisation", edit_organisation_path(@organisation), class: "btn btn-primary form-button" %>
     <% end %>
@@ -95,9 +94,9 @@
 
 <% unless @organisation.opportunities.empty? %>
   <% @organisation.opportunities.each do |o| %>
-  <hr class="col-md-8 col-xs-8 col-sm-8 col-md-offset-2">
+  <hr class="col-md-8 col-xs-12 col-sm-12 col-md-offset-2">
 <div class="row">
-  <div class="col-md-4 col-xs-4 col-sm-4 col-md-offset-2 search-pane-left">
+  <div class="col-md-4 col-xs-6 col-sm-6 col-md-offset-2 search-pane-left">
     <h4 class="search-title">
       <%= link_to o.name, opportunity_path(o), class: "search-title" %>
     </h4>
@@ -107,7 +106,7 @@
     <p><span class="glyphicon glyphicon-map-marker"></span> <%= o.town %>&nbsp;<%= o.postcode %></p>
   </div>
 
-  <div class="col-md-4 col-xs-4 col-sm-4 search-pane-right">
+  <div class="col-md-4 col-xs-6 col-sm-6 search-pane-right">
     <p>
       <span class="glyphicon glyphicon-time"></span> 
       Posted <%= time_ago_in_words(o.created_at) %> ago
@@ -118,7 +117,7 @@
 
   <% end %>
 <% end %>
-<hr class="col-md-8 col-xs-8 col-sm-8 col-md-offset-2">
+<hr class="col-md-8 col-xs-12 col-sm-12 col-md-offset-2">
 
 
 

@@ -67,7 +67,7 @@
     <p><%= @user.poster.organisation.name %></p>
   </div>
 </div>
-<% elsif  @user.poster %>
+<% elsif  @user.individual %>
 
 <div class="row">
   <div class="col-md-2 col-md-offset-3">
@@ -96,6 +96,42 @@
 
   <div class="col-md-5">
     <p><%= @user.individual.postcode %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-3">
+    <p><b>Interests</b></p>
+  </div>
+
+  <div class="col-md-5">
+    <% @user.individual.interests.each do |i| %>
+    <li><%= i.name %></li>
+    <% end %>
+  </div>
+</div>
+<br/>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-3">
+    <p><b>Skills</b></p>
+  </div>
+
+  <div class="col-md-5">
+    <% @user.individual.skills.each do |s| %>
+    <li><%= s.name %></li>
+    <% end %>
+  </div>
+</div>
+<br/>
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-3">
+    <p><b>Additional Skills</b></p>
+  </div>
+
+  <div class="col-md-5">
+    <p><%= @user.individual.additional_skills %></p>
   </div>
 </div>
 

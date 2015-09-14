@@ -5,6 +5,7 @@ class Application < ActiveRecord::Base
   belongs_to :opportunity
 
   validates_presence_of :individual, :opportunity, :cover_letter, :resume
+  validates_uniqueness_of :opportunity_id, :scope => :individual_id
 
 
 

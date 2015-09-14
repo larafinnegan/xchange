@@ -24,6 +24,7 @@ class UsersController < ApplicationController
     @poster = current_user.poster
     @organisations = Organisation.all
     @skills = Skill.all
+    @interests = Interest.all
   end
 
   def update

@@ -4,8 +4,18 @@ class PostersController < ApplicationController
     @organisations = Organisation.all
   end
 
-  def edit
-    @poster = Poster.find(params[:id])
+   def edit
+  end
+
+  def update
+    @user = current_user
+    @poster = current_user.poster
+    if @poster.update_attributes(poster_params)
+      flash[:success] = "Profile updated successfully."
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 
   def create
