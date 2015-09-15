@@ -73,21 +73,6 @@
 </div>
 
 <div class="row">
-  <div class="col-md-2 col-md-offset-2">
-    <p ><b>Primary Contact</b></p>
-  </div>
-
-  <div class="col-md-6">
-    <span><%= @opportunity.first_name %> <%= @opportunity.last_name %></span><br/>
-    <span><%= @opportunity.title %></span><br/>
-     <span class="red"><%= mail_to @opportunity.email, @opportunity.email, {class: "red"} %></span><br/>
-      <span><%= @opportunity.phone %></span>
-
-  </div>
-</div>
-
-
-<div class="row">
   <div class="col-md-8 col-md-offset-2">
     <hr>
 

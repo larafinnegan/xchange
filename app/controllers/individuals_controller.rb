@@ -20,6 +20,8 @@ class IndividualsController < ApplicationController
   end
 
   def index
+    @individual = current_user.individual
+    @applications = @individual.applications.all
   end
 
   def create
@@ -36,6 +38,11 @@ class IndividualsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def show
+    @individual = current_user.individual
+    @applications = @individual.applications.all
   end
 
   private

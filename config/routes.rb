@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
      resources :opportunities do
-    resources :applications, only: [:new, :create]
+    resources :applications, only: [:new, :create, :index]
     end 
 
   resources :users, :individuals, :organisations, :opportunities, :posters, :searches, :applications

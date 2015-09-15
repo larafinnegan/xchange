@@ -8,7 +8,24 @@ class Opportunity < ActiveRecord::Base
   has_many :applications
   has_many :individuals, -> { uniq }, through: :applications 
 
-  validates_presence_of :name, :postcode
+  validates_presence_of :name
+
+  validate :validate_postcode
+
+  def validate_postcode
+    unless self.postcode 
+      return errors.add(:postcode, "Postcode cannot be blank") 
+    end
+      a = Postcodes::IO.new
+      b = a.lookup(postcode) 
+      if b.nil?
+        return errors.add(:postcode, "#{postcode.upcase} is not a valid postcode.") 
+      else
+        self.postcode = b.postcode
+        self.lat = b.latitude
+        self.lng = b.longitude
+      end
+  end
 
   private
 
