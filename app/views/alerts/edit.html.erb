@@ -1,0 +1,89 @@
+<% provide(:title, "New Role Alert") %>
+<h2 class="form-header">Create a New Role Alert</h2>
+
+<div class="row full-form">
+  <div class="col-md-12">
+    <%= form_for(@alert, html: { class: 'form-horizontal' }) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+
+        <h4 class="subheading">Search Details</h4>
+        <hr>
+
+        <div class="form-group">
+          <%= f.label :name, "* Role Alert Name", class: "col-md-4 control-label" %>
+          <div class="col-md-6">
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :postcode, "Search by location", class: "col-md-4 control-label" %>
+          <div class="col-md-6">
+          <%= f.text_field :postcode, class: "form-control", placeholder: "Please enter a postcode" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :distance, "Within how many km?", class: "col-md-4 control-label" %>
+          <div class="col-md-6">
+          <%= f.select :distance, [['within 5 km', 5], ['within 10 km', 10], ['within 15 km', 15], ['within 20 km', 20]], {prompt: "select distance"}, {class: "form-control"} %>
+        </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :skill_ids, "Skills", class: "col-md-4 control-label" %>
+          <div class="col-md-6">
+          <%= f.collection_select :skill_ids, @skills, :id, :name, {prompt: "---"}, {multiple: true, class: "form-control"}   %>
+        </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :interest_ids, "Interests", class: "col-md-4 control-label" %>
+          <div class="col-md-6">
+          <%= f.collection_select :interest_ids, @interests, :id, :name, {prompt: "---"}, {multiple: true, class: "form-control"}   %>
+        </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-md-4">Suitable for:</label>
+          <div class="col-md-6">
+
+          <div class="checkbox">
+            <%= f.label :under_18 do %>
+            <%= f.check_box :under_18 %>
+            <span>Under 18s?</span>
+            <% end %>
+          </div>
+
+          <div class="checkbox">
+            <%= f.label :group do %>
+            <%= f.check_box :group %>
+            <span>Groups?</span>
+            <% end %>
+          </div>
+
+          <div class="checkbox">
+            <%= f.label :expert do %>
+            <%= f.check_box :expert %>
+            <span>Expert?</span>
+            <% end %>
+          </div>
+          </div>
+        </div> <!-- /.form-group -->
+
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4 col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4">
+            <div class="form-group">
+              <%= f.submit "Update Alert", class: "btn btn-primary form-button form-control" %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

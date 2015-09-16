@@ -13,12 +13,10 @@ class UserMailer < ApplicationMailer
 
 
   def submit_app(application, file, filename)
-    p application
-
     @application = application
     @opportunity = Opportunity.find(application.opportunity_id)
     attachments[filename] = file
-    mail to: @opportunity.email, subject: "New Application"
+    mail to: @opportunity.email, subject: "New Application for #{@opportunity.name}"
     
   end
 end

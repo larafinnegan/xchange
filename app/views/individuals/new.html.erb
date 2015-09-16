@@ -39,14 +39,6 @@
       <h4 class="subheading">Additional Information</h4>
       <hr>
 
-      <div class="form-group">
-          <%= f.label :interest_ids, "* Key Interests", class: "col-md-3 control-label" %>
-          <div class="col-md-7">
-            <%= f.collection_select :interest_ids, @interests, :id, :name, {prompt: "---"}, {multiple: true, class: "form-control"}   %>
-          </div>
-        </div>
-        <br/>
-
         <div class="form-group">
           <%= f.label :skill_ids, "* Key Skills", class: "col-md-3 control-label" %>
           <div class="col-md-7">

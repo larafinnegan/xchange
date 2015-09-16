@@ -22,6 +22,7 @@ class ApplicationsController < ApplicationController
     @applications = current_user.individual.applications
   end
 
+
   private 
 
   def application_params

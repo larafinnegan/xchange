@@ -4,6 +4,7 @@
 <% if @applications.empty? %>
 <p>You have not submitted any applications.</p>
 <% else %>
+<div class="table-responsive">
 <table class="table table-bordered table-striped" id="sortable">
   <thead>
     <tr>
@@ -23,7 +24,7 @@
     <% @applications.each do |a| %>
       <tr data-item-id=<%= "sdfsf" %> class="item">
         <td>
-          <%= link_to a.opportunity.name, opportunity_path(a.opportunity) %>
+          <%= link_to a.opportunity.name, opportunity_path(a.opportunity), class: "red" %>
         </td>
         <td>
           <%= a.opportunity.town %> <%= a.opportunity.postcode %>
@@ -35,4 +36,8 @@
     <% end %>
   </tbody>
 </table>
+</div>
 <% end %>
+<br/>
+<br/>
+

@@ -1,1 +1,45 @@
+<% provide(:title, "Applicant Details") %>
+<h2 class="form-header">Applicant Details for <%= @opportunity.name %></h2>
 
+<div class="table-responsive">
+<table class="table table-bordered table-striped" id="sortable">
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Contact Details
+      </th>
+      <th>
+        Skills
+      </th>
+      <th>
+        Date Applied
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @applications.each do |a| %>
+      <tr data-item-id=<%= "sdfsf" %> class="item">
+        <td>
+          <%= a.individual.user.name %>
+        </td>
+        <td>
+          <b>Email: </b><%= mail_to nil, a.individual.user.email, class: "red" %><br/>
+          <b>Phone: </b><%= a.individual.phone %>
+        </td>
+        <td>
+          <% a.individual.skills.each do |s| %>
+          <li><%= s.name %></li>
+          <% end %>
+        </td>
+        <td>
+          <%= a.created_at.strftime("%b %d, %Y") %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

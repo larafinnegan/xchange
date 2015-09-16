@@ -33,7 +33,7 @@
             <li><%= link_to "Settings", user_path(current_user) %></li>
             <% if current_user.individual %>
             <li role="separator" class="divider hidden-xs hidden-sm"></li>
-            <li><%= link_to "My Role Alerts", "#" %></li>
+            <li><%= link_to "My Role Alerts", individual_alerts_path(current_user.individual) %></li>
             <li role="separator" class="divider hidden-xs hidden-sm"></li>
             <li><%= link_to "My Applications", applications_path %></li>
             <% elsif current_user.poster %>

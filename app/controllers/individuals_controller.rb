@@ -20,8 +20,8 @@ class IndividualsController < ApplicationController
   end
 
   def index
-    @individual = current_user.individual
-    @applications = @individual.applications.all
+    @opportunity = Opportunity.find(params[:opportunity_id])
+    @applications = @opportunity.applications.all
   end
 
   def create
@@ -48,6 +48,6 @@ class IndividualsController < ApplicationController
   private
   def individual_params
       params.require(:individual).permit(:phone, :town, :postcode, :additional_skills, 
-                                    :user_id, :skill_ids => [], :interest_ids => [])
+                                    :user_id, :skill_ids => [])
     end
 end

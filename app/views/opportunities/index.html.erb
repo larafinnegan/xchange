@@ -1,5 +1,6 @@
 <% provide(:title, "All Opportunities") %>
 <h2 class="form-header"><%= @organisation.name %>'s Opportunities</h2>
+<div class="table-responsive">
 <table class="table table-bordered table-striped" id="sortable">
   <thead>
     <tr>
@@ -30,9 +31,11 @@
           <%= o.close.strftime("%b %d, %Y") %>
         </td>
         <td>
-          <%= o.applications.count %>
+          <%= o.applications.count %>&nbsp;&nbsp;
+          <%= link_to "View Details", opportunity_individuals_path(o), class: "red" if o.applications.count > 0  %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>

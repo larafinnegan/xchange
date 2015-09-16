@@ -172,7 +172,7 @@
  <div class="row">
       <div class="col-md-8 col-md-offset-2 center">
       <% if logged_in? %>
-        <% if current_user.poster %>
+        <% if current_user.poster && current_user.poster.organisation == @opportunity.organisation %>
           <%= link_to "Edit Opportunity", edit_opportunity_path(@opportunity), class: "btn btn-primary form-button" %>
           <% elsif current_user.individual %>
             <%= link_to "Apply", new_opportunity_application_path(@opportunity), class: "btn btn-primary form-button" %>

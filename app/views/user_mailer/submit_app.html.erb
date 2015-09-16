@@ -5,11 +5,14 @@ A new application has been submitted for <%= link_to @application.opportunity.na
 </p>
 
 <h4>Applicant Details:</h4>
-  <div><%= @application.individual.user.first_name %> <%= @application.individual.user.first_name %></div>
+  <div><%= @application.individual.user.name %></div>
   <div><%= @application.individual.user.email %></div>
   <div><%= @application.individual.phone %></div>
-
-  <div><%@application.individual.skills.each do |s| %>
-      <%= s.name %></div>
+<br/>
+<h5>Skills</h5>
+  <%@application.individual.skills.each do |s| %>
+      <li><%= s.name %></li>
       <% end %>
 
+<h5>Cover Letter/Comments</h5>
+<p><%= @application.cover_letter %></p>

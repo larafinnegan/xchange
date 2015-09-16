@@ -11,10 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913012802) do
+ActiveRecord::Schema.define(version: 20150916010721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alerts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "postcode"
+    t.boolean  "expert"
+    t.integer  "individual_id"
+    t.boolean  "under_18"
+    t.boolean  "group"
+    t.integer  "distance"
+    t.integer  "search_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "alerts", ["individual_id"], name: "index_alerts_on_individual_id", using: :btree
+
+  create_table "alerts_interests", id: false, force: :cascade do |t|
+    t.integer "alert_id",    null: false
+    t.integer "interest_id", null: false
+  end
+
+  add_index "alerts_interests", ["alert_id"], name: "index_alerts_interests_on_alert_id", using: :btree
+  add_index "alerts_interests", ["interest_id"], name: "index_alerts_interests_on_interest_id", using: :btree
+
+  create_table "alerts_skills", id: false, force: :cascade do |t|
+    t.integer "alert_id", null: false
+    t.integer "skill_id", null: false
+  end
+
+  add_index "alerts_skills", ["alert_id"], name: "index_alerts_skills_on_alert_id", using: :btree
+  add_index "alerts_skills", ["skill_id"], name: "index_alerts_skills_on_skill_id", using: :btree
 
   create_table "applications", force: :cascade do |t|
     t.integer  "individual_id"
@@ -56,11 +87,6 @@ ActiveRecord::Schema.define(version: 20150913012802) do
   end
 
   add_index "individuals", ["user_id"], name: "index_individuals_on_user_id", using: :btree
-
-  create_table "individuals_interests", id: false, force: :cascade do |t|
-    t.integer "individual_id"
-    t.integer "interest_id"
-  end
 
   create_table "individuals_skills", id: false, force: :cascade do |t|
     t.integer "individual_id"
@@ -200,6 +226,7 @@ ActiveRecord::Schema.define(version: 20150913012802) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "alerts", "individuals"
   add_foreign_key "applications", "individuals"
   add_foreign_key "applications", "opportunities"
   add_foreign_key "individuals", "users"

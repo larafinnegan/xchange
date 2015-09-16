@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
     BCrypt::Password.create(string, cost: cost)
   end
 
+  def name
+    self.first_name + " " + self.last_name
+  end
+
 
   def User.new_token
     SecureRandom.urlsafe_base64

@@ -3,8 +3,8 @@ class Individual < ActiveRecord::Base
   before_save :upcase_fields
 
   belongs_to :user
-  has_and_belongs_to_many :interests
   has_and_belongs_to_many :skills
+  has_many :alerts, dependent: :destroy
 
   has_many :applications, dependent: :destroy
   has_many :opportunities, -> { uniq }, through: :applications

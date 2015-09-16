@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get 'sessions/new'
 
    namespace :admin do
@@ -7,11 +8,17 @@ Rails.application.routes.draw do
     :posters, :searches, :applications, :skills, :classifications, :districts, :interests
   end
 
+  resources :individuals do
+    resources :alerts, only: [:new, :create, :index]
+  end
+
      resources :opportunities do
-    resources :applications, only: [:new, :create, :index]
+    resources :applications, only: [:new, :create]
+    resources :individuals, only: [:index]
     end 
 
-  resources :users, :individuals, :organisations, :opportunities, :posters, :searches, :applications
+  resources :users, :individuals, :organisations, :opportunities, :posters, 
+  :searches, :applications, :alerts
 
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
