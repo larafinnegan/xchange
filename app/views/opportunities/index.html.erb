@@ -22,7 +22,7 @@
     <% @opportunities.each do |o| %>
       <tr data-item-id=<%= "sdfsf" %> class="item">
         <td>
-          <%= link_to o.name, opportunity_path(o) %>
+          <%= link_to o.name, opportunity_path(o), class: "red" %>
         </td>
         <td>
           <%= o.created_at.strftime("%b %d, %Y") %>
@@ -39,3 +39,5 @@
   </tbody>
 </table>
 </div>
+<br/>
+<br/>
