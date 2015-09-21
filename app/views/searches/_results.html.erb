@@ -1,8 +1,13 @@
+
+
 <hr>
+
 <% if @search.opportunities.empty? %>
 <p>Your search returned no results.</p>
+
 <% else %>
-  <% @search.opportunities.each do |o| %>
+<% @search.opportunities.each do |o| %>
+
 <div class="row">
   <div class="col-md-6 col-xs-6 col-sm-6 search-pane-left">
     <h4 class="search-title">
@@ -21,10 +26,9 @@
     </p>
     <%= link_to "View", opportunity_path(o), class: "btn btn-sm view-button" %>
   </div>
+</div>
+<p id="map">dfsfddsfdsfdsf</p>
 
-
-  </div>
-  
-  <hr>
-  <% end %>
+<hr>
+<% end %>
 <% end %>

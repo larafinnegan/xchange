@@ -22,6 +22,8 @@ class Opportunity < ActiveRecord::Base
         return errors.add(:postcode, "#{postcode.upcase} is not a valid postcode.") 
       else
         self.postcode = b.postcode
+        self.lat = b.latitude
+        self.lng = b.longitude
       end
   end
 

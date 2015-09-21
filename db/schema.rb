@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916010721) do
+ActiveRecord::Schema.define(version: 20150920193407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(version: 20150916010721) do
     t.boolean  "group"
     t.integer  "distance"
     t.integer  "search_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.decimal  "lat",           precision: 10, scale: 6
+    t.decimal  "lng",           precision: 10, scale: 6
   end
 
   add_index "alerts", ["individual_id"], name: "index_alerts_on_individual_id", using: :btree
@@ -115,8 +117,8 @@ ActiveRecord::Schema.define(version: 20150916010721) do
   create_table "opportunities", force: :cascade do |t|
     t.string   "name"
     t.integer  "organisation_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.text     "tasks"
     t.string   "commitment"
     t.date     "close"
@@ -134,6 +136,8 @@ ActiveRecord::Schema.define(version: 20150916010721) do
     t.string   "phone"
     t.string   "title"
     t.string   "email"
+    t.decimal  "lat",                    precision: 10, scale: 6
+    t.decimal  "lng",                    precision: 10, scale: 6
   end
 
   add_index "opportunities", ["organisation_id"], name: "index_opportunities_on_organisation_id", using: :btree
@@ -146,8 +150,8 @@ ActiveRecord::Schema.define(version: 20150916010721) do
 
   create_table "organisations", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.string   "website"
     t.string   "address_1"
     t.string   "address_2"
@@ -157,6 +161,8 @@ ActiveRecord::Schema.define(version: 20150916010721) do
     t.text     "description"
     t.integer  "classification_id"
     t.string   "twitter"
+    t.decimal  "lat",               precision: 10, scale: 6
+    t.decimal  "lng",               precision: 10, scale: 6
   end
 
   add_index "organisations", ["classification_id"], name: "index_organisations_on_classification_id", using: :btree
@@ -184,12 +190,14 @@ ActiveRecord::Schema.define(version: 20150916010721) do
     t.string   "name"
     t.string   "postcode"
     t.boolean  "expert"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "user_id"
     t.boolean  "under_18"
     t.boolean  "group"
     t.integer  "distance"
+    t.decimal  "lat",        precision: 10, scale: 6
+    t.decimal  "lng",        precision: 10, scale: 6
   end
 
   add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree

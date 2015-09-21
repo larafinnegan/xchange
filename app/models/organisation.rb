@@ -10,7 +10,7 @@ class Organisation < ActiveRecord::Base
 
   validates_presence_of :name, :classification_id
 
-  validate :validate_postcode
+ validate :validate_postcode
 
   def validate_postcode
     unless self.postcode 
@@ -22,6 +22,8 @@ class Organisation < ActiveRecord::Base
         return errors.add(:postcode, "#{postcode.upcase} is not a valid postcode.") 
       else
         self.postcode = b.postcode
+        self.lat = b.latitude
+        self.lng = b.longitude
       end
   end
 

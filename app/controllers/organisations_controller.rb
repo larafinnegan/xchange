@@ -8,6 +8,9 @@ class OrganisationsController < ApplicationController
 
    def create
     @organisation = Organisation.new(organisation_params)
+    @classifications = Classification.all
+    @districts = District.all
+    @interests = Interest.all
     if @organisation.save
       p current_user.poster
       p @organisation.id

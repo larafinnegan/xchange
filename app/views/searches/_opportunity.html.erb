@@ -1,7 +1,7 @@
-
+<%= javascript_include_tag "location.js" %>
 <hr>
   <% @opportunities.each do |o| %>
-<div class="row">
+<div class="row newline">
   <div class="col-md-6 col-xs-6 col-sm-6 search-pane-left">
     <h4 class="search-title">
       <%= link_to o.name, opportunity_path(o), class: "search-title" %>
@@ -22,6 +22,7 @@
 
 
   </div>
+  <div id="map-base" class="testing"></div>
   
   <hr>
   <% end %>
