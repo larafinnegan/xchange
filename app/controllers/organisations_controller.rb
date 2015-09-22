@@ -12,8 +12,6 @@ class OrganisationsController < ApplicationController
     @districts = District.all
     @interests = Interest.all
     if @organisation.save
-      p current_user.poster
-      p @organisation.id
       current_user.poster.organisation_id = @organisation.id
       current_user.poster.save
       flash[:info] = "#{@organisation.name} has been successfully created."

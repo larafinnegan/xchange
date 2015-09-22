@@ -10,6 +10,7 @@ class OpportunitiesController < ApplicationController
   end
 
   def create
+    @skills = Skill.all
     @opportunity = current_user.opportunities.build(opportunity_params)
     @opportunity.organisation_id = current_user.poster.organisation.id
     if @opportunity.save
@@ -26,6 +27,7 @@ class OpportunitiesController < ApplicationController
   end
 
    def update
+    @skills = Skill.all
     @opportunity = Opportunity.find(params[:id])
     if @opportunity.update_attributes(opportunity_params)
       redirect_to @opportunity

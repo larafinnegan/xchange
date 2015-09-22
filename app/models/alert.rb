@@ -3,10 +3,10 @@ class Alert < ActiveRecord::Base
   has_and_belongs_to_many :skills
   has_and_belongs_to_many :interests
 
-  validate :validate_postcode
+#  validate :validate_postcode
 
   def validate_postcode
-    return unless self.postcode 
+    return unless self.postcode.nil?
     a = Postcodes::IO.new
     b = a.lookup(postcode) 
     if b.nil?

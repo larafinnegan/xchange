@@ -1,0 +1,30 @@
+<% provide(:title, "New Skill") %>
+<h2 class="form-header">Create a New Skill</h2>
+
+<div class="row full-form">
+  <div class="col-md-12">
+    <%= form_for([:admin, @skill], html: { class: 'form-horizontal' }) do |f| %>
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+
+        <div class="form-group">
+          <%= f.label :name, "* Skill Name", class: "col-md-4 control-label" %>
+          <div class="col-md-6">
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+    </div> <!-- /.form-group -->
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4 col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4">
+        <div class="form-group">
+          <%= f.submit "Create Skill", class: "btn btn-primary form-button form-control" %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+  </div>
+</div>

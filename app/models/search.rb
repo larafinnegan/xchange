@@ -13,10 +13,10 @@ class Search < ActiveRecord::Base
     o.uniq
   end
 
-   validate :validate_postcode
+  # validate :validate_postcode
 
   def validate_postcode
-    return unless self.postcode 
+    return unless self.postcode.nil?
     a = Postcodes::IO.new
     b = a.lookup(postcode) 
     if b.nil?

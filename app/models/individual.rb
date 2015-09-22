@@ -11,7 +11,7 @@ class Individual < ActiveRecord::Base
   validate :validate_postcode
 
   def validate_postcode
-    unless self.postcode 
+      if self.postcode.empty? 
       return errors.add(:postcode, "Postcode cannot be blank") 
     end
       a = Postcodes::IO.new

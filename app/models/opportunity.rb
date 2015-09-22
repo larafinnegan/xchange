@@ -13,7 +13,7 @@ class Opportunity < ActiveRecord::Base
   validate :validate_postcode
 
   def validate_postcode
-    unless self.postcode 
+    if self.postcode.empty? 
       return errors.add(:postcode, "Postcode cannot be blank") 
     end
       a = Postcodes::IO.new
@@ -32,6 +32,5 @@ class Opportunity < ActiveRecord::Base
     def capitalize_fields
       self.name = name.downcase.capitalize
       self.town = town.downcase.capitalize if self.town
-      self.postcode = postcode.upcase
     end
 end

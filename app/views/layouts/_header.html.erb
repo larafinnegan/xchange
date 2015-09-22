@@ -59,7 +59,11 @@
             <li><%= link_to "Individual FAQs", individual_faq_path %></li>
           </ul>
         </li>
+        <% if logged_in? && current_user.admin %>
+        <li><%= link_to "Admin", admin_path %></li>
+        <% end %>
       </ul>
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
   </nav>

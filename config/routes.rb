@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
 
 
+  namespace :admin do
+  get 'interests/new'
+  end
+
+  namespace :admin do
+  get 'interests/edit'
+  end
+
+  namespace :admin do
+  get 'interests/index'
+  end
+
   get 'sessions/new'
 
    namespace :admin do
@@ -29,6 +41,8 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+  get    'admin'   => 'static_pages#dashboard'
+
 
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

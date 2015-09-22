@@ -8,6 +8,8 @@ class Interest < ActiveRecord::Base
 
   validates :name, presence: true
 
+  default_scope { order(:name) } 
+
   private
     def upcase_name
       self.name = name.downcase.capitalize
